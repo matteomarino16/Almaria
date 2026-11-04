@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="it" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Almarìa — Case Mediterranee · San Nicola L'Arena, Sicilia</title>
+  <meta name="description" content="Almarìa Case Mediterranee: sei case vista mare sul porto di San Nicola L'Arena (Trabia, Palermo). Pietra, legno, calce e il fascino autentico della Sicilia.">
+  <link rel="canonical" href="https://www.almariacasemediterranee.it/">
+  <meta property="og:title" content="Almarìa — Case Mediterranee">
+  <meta property="og:description" content="Il fascino autentico della Sicilia in un castello sul mare. Sei case vista mare a San Nicola L'Arena.">
+  <meta property="og:image" content="https://www.almariacasemediterranee.it/assets/img/hero.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high">
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    "name": "Almarìa Case Mediterranee",
+    "url": "https://www.almariacasemediterranee.it/",
+    "image": "https://www.almariacasemediterranee.it/assets/img/hero.jpg",
+    "telephone": "+39 345 692 0384",
+    "email": "almariacasemediterranee@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Principe San Vincenzo, snc",
+      "postalCode": "90019",
+      "addressLocality": "San Nicola L'Arena, Trabia",
+      "addressRegion": "PA",
+      "addressCountry": "IT"
+    },
+    "numberOfRooms": 6,
+    "sameAs": ["https://www.instagram.com/almariacasemediterranee/"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Simbolo del logo riutilizzabile -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="almaria-mark" viewBox="0 0 120 150">
+      <path d="M8 148 V58 A52 52 0 0 1 112 58 V148" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <path d="M8 148 V58 A52 52 0 0 1 98 22 A44 44 0 0 0 26 58 V148 Z" fill="currentColor"/>
+      <path d="M36 148 V140 H44 V132 H52 V124 H60 V116 H111" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M36 140 H111 M44 132 H111 M52 124 H111" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M68 116 c-4-6-4-14 0-19 c2-2 2-4 1-5 h8 c-1 1-1 3 1 5 c4 5 4 13 0 19 Z" fill="currentColor"/>
+      <path d="M86 144 c-7-10-8-24-1-32 c3-4 2-7 0-9 h12 c-2 2-3 5 0 9 c7 8 6 22-1 32 Z" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <a href="#top" class="header__brand" aria-label="Almarìa, torna all'inizio">
+      <svg class="header__mark"><use href="#almaria-mark"/></svg>
+      <span class="header__name">Almarìa</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navigazione principale">
+      <div class="nav__links">
+        <a href="#chi-siamo"><span class="nav__num">01</span>Chi siamo</a>
+        <a href="#struttura"><span class="nav__num">02</span>Le case</a>
+        <a href="#servizi"><span class="nav__num">03</span>Servizi</a>
+        <a href="#galleria"><span class="nav__num">04</span>Galleria</a>
+        <a href="#contatti"><span class="nav__num">05</span>Contatti</a>
+      </div>
+      <div class="nav__footer">
+        <a href="#prenota" class="btn btn--dark nav__cta">Richiedi disponibilità</a>
+        <p class="nav__contacts">
+          <a href="tel:+393456920384">+39 345 692 03 84</a>
+          <a href="https://wa.me/393456920384" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.instagram.com/almariacasemediterranee/" target="_blank" rel="noopener">Instagram</a>
+        </p>
+        <p class="nav__address">San Nicola L’Arena — Sicilia</p>
+      </div>
+    </nav>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+    <div class="header__actions">
+      <a href="#prenota" class="btn btn--outline btn--sm">Prenota</a>
+      <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__brand">
+        <h1 class="hero__logo" id="hero-logo">
+          <svg class="hero__mark" aria-hidden="true"><use href="#almaria-mark"/></svg>
+          <span class="hero__wordmark">Almarìa</span>
+          <span class="hero__tag">Case Mediterranee</span>
+        </h1>
+        <p class="hero__lead">Il fascino autentico della Sicilia in un castello sul mare.</p>
+        <a href="#chi-siamo" class="hero__scroll" aria-label="Scorri verso il basso"><span></span></a>
+      </div>
+
+      <!-- BANNER KROSS BOOKING
+           Incollare qui dentro il codice del widget/banner fornito da Kross Booking
+           (script + div). Il pulsante qui sotto è un segnaposto: va rimosso quando
+           il widget è attivo. -->
+      <div class="booking-bar" id="kross-booking">
+        <a href="#prenota" class="btn btn--dark booking-bar__fallback">Verifica disponibilità</a>
+      </div>
+    </section>
+
+    <!-- CHI SIAMO -->
+    <section class="section about" id="chi-siamo">
+      <div class="container about__grid">
+        <div class="about__text">
+          <p class="eyebrow reveal">Chi siamo</p>
+          <h2 class="section__title reveal">Ad Almarìa il tempo non scorre: si posa</h2>
+          <p class="reveal">Ad Almarìa il tempo non scorre: si posa lieve sulle pietre calde, si riflette nell’acqua ferma delle ore vuote. Un tempo si lavorava il mare: si scioglievano i nodi delle reti, si contava il sale con mani stanche e serene. Ora, tra quelle stesse pietre, il vento passa lento, e le tende bianche respirano come vele al vento.</p>
+          <p class="reveal">Le case di Almarìa non si abitano: si ascoltano. Parlano con voci di calce, vento e salsedine. Ognuna custodisce un respiro, una luce, una memoria d’estate che non finisce. Ogni stanza ha una tenda bianca che danza piano, e ogni tenda nasconde un frammento di mare.</p>
+          <p class="reveal">Chi arriva qui non cerca solo riposo, ma la distanza esatta tra il cielo e il mare, tra il dentro e il fuori, tra il tempo che era e quello che verrà.</p>
+          <blockquote class="about__quote reveal">Perché Almarìa non è un luogo da vedere, ma un modo di ricordare ciò che si era dimenticato di sentire.</blockquote>
+        </div>
+        <figure class="about__img ph reveal"><img src="assets/img/chi-siamo.jpg" alt="Nicchia ad arco con ceramiche e scrittoio in legno" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <!-- LA NOSTRA STRUTTURA -->
+    <section class="section struttura" id="struttura">
+      <div class="container">
+        <div class="struttura__intro">
+          <div class="section__head">
+            <p class="eyebrow reveal">La nostra struttura</p>
+            <h2 class="section__title reveal">Un angolo di Sicilia dove il passato e il presente si incontrano</h2>
+            <p class="section__lead reveal">Questa casa è un omaggio alla sostenibilità e all'autenticità delle costruzioni siciliane. Le case sono state ristrutturate con attenzione ai materiali: pietra locale, legno naturale e gesso si combinano in uno stile semplice e raffinato, che richiama la bellezza sobria della tradizione siciliana.</p>
+          </div>
+          <div class="struttura__text reveal">
+            <p>Ogni elemento è stato riletto in chiave moderna, per creare un ambiente che unisce il calore della tradizione con il comfort contemporaneo. Gli arredi in legno massello, i divani in muratura, le sedute tipiche con la paglia intrecciata e le ceramiche artigianali richiamano la tradizione, mentre i passaggi tra gli ambienti sono scanditi da archi eleganti che conferiscono fluidità e armonia agli spazi.</p>
+            <p>Dalle grandi finestre si accede a un balcone privato, con una vista mozzafiato sul porto di San Nicola, dove il mare e il cielo sembrano fondersi in un'unica prospettiva senza tempo.</p>
+          </div>
+        </div>
+
+        <div class="houses reveal">
+          <div class="houses__tabs" role="tablist" aria-label="Le sei case">
+            <button class="houses__tab" role="tab" id="tab-agave" aria-controls="casa-agave" aria-selected="true" tabindex="0"><span>01</span>Agave</button>
+            <button class="houses__tab" role="tab" id="tab-mirto" aria-controls="casa-mirto" aria-selected="false" tabindex="-1"><span>02</span>Mirto</button>
+            <button class="houses__tab" role="tab" id="tab-aloe" aria-controls="casa-aloe" aria-selected="false" tabindex="-1"><span>03</span>Aloe</button>
+            <button class="houses__tab" role="tab" id="tab-timo" aria-controls="casa-timo" aria-selected="false" tabindex="-1"><span>04</span>Timo</button>
+            <button class="houses__tab" role="tab" id="tab-ginestra" aria-controls="casa-ginestra" aria-selected="false" tabindex="-1"><span>05</span>Ginestra</button>
+            <button class="houses__tab" role="tab" id="tab-carubbo" aria-controls="casa-carubbo" aria-selected="false" tabindex="-1"><span>06</span>Carubbo</button>
+          </div>
+          <article class="house is-active" id="casa-agave" role="tabpanel" aria-labelledby="tab-agave" data-gallery="agave" data-count="7" data-name="Casa Agave">
+            <div class="mosaic">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Agave: Living con divano e tavolino in legno"><img src="assets/img/case/agave-1.jpg" alt="Casa Agave — Living con divano e tavolino in legno"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Agave: Mensola con ceramiche e stampe"><img src="assets/img/case/agave-2.jpg" alt="Casa Agave — Mensola con ceramiche e stampe" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Agave: Lavabo in ceramica e specchio tondo"><img src="assets/img/case/agave-3.jpg" alt="Casa Agave — Lavabo in ceramica e specchio tondo" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Agave: Zona pranzo"><img src="assets/img/case/agave-4.jpg" alt="Casa Agave — Zona pranzo" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Agave: Vasca da bagno in camera"><img src="assets/img/case/agave-5.jpg" alt="Casa Agave — Vasca da bagno in camera" loading="lazy">
+                <span class="mosaic__all">Vedi tutte le foto (7)</span></button>
+            </div>
+            <div class="house__info">
+              <div class="house__title">
+                <span class="house__num">01</span>
+                <h3>Casa Agave</h3>
+                <p class="house__guests">Per 2 / 4 persone</p>
+              </div>
+              <ul class="house__features">
+                  <li>Camera da letto con balcone privato, vista mare e vasca da bagno</li>
+                  <li>Divano letto nel living</li>
+                  <li>Bagno completo</li>
+                  <li>Cucina</li>
+              </ul>
+              <div class="house__actions">
+                <a href="#prenota" class="btn btn--dark" data-book="Casa Agave">Richiedi disponibilità</a>
+                <button class="btn btn--outline house__gallery-btn">Tutte le foto</button>
+              </div>
+            </div>
+          </article>
+          <article class="house" id="casa-mirto" role="tabpanel" aria-labelledby="tab-mirto" data-gallery="mirto" data-count="6" data-name="Casa Mirto" hidden>
+            <div class="mosaic">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Mirto: Suite matrimoniale"><img src="assets/img/case/mirto-1.jpg" alt="Casa Mirto — Suite matrimoniale" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Mirto: Scrittoio con sedie impagliate"><img src="assets/img/case/mirto-2.jpg" alt="Casa Mirto — Scrittoio con sedie impagliate" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Mirto: Letto matrimoniale"><img src="assets/img/case/mirto-3.jpg" alt="Casa Mirto — Letto matrimoniale" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Mirto: Bagno con lavabo in ceramica"><img src="assets/img/case/mirto-4.jpg" alt="Casa Mirto — Bagno con lavabo in ceramica" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Mirto: Balcone con vista sul porto"><img src="assets/img/case/mirto-5.jpg" alt="Casa Mirto — Balcone con vista sul porto" loading="lazy">
+                <span class="mosaic__all">Vedi tutte le foto (6)</span></button>
+            </div>
+            <div class="house__info">
+              <div class="house__title">
+                <span class="house__num">02</span>
+                <h3>Casa Mirto</h3>
+                <p class="house__guests">Per 2 persone</p>
+              </div>
+              <ul class="house__features">
+                  <li>Suite matrimoniale con balcone privato vista mare</li>
+                  <li>Bagno completo</li>
+                  <li>Cucina in armadio</li>
+              </ul>
+              <div class="house__actions">
+                <a href="#prenota" class="btn btn--dark" data-book="Casa Mirto">Richiedi disponibilità</a>
+                <button class="btn btn--outline house__gallery-btn">Tutte le foto</button>
+              </div>
+            </div>
+          </article>
+          <article class="house" id="casa-aloe" role="tabpanel" aria-labelledby="tab-aloe" data-gallery="aloe" data-count="7" data-name="Casa Aloe" hidden>
+            <div class="mosaic">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Aloe: Living con poltrona in paglia"><img src="assets/img/case/aloe-1.jpg" alt="Casa Aloe — Living con poltrona in paglia" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Aloe: Camera da letto"><img src="assets/img/case/aloe-2.jpg" alt="Casa Aloe — Camera da letto" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Aloe: Dettagli in terracotta"><img src="assets/img/case/aloe-3.jpg" alt="Casa Aloe — Dettagli in terracotta" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Aloe: Nicchia ad arco con scrittoio"><img src="assets/img/case/aloe-4.jpg" alt="Casa Aloe — Nicchia ad arco con scrittoio" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Aloe: Balcone vista mare"><img src="assets/img/case/aloe-5.jpg" alt="Casa Aloe — Balcone vista mare" loading="lazy">
+                <span class="mosaic__all">Vedi tutte le foto (7)</span></button>
+            </div>
+            <div class="house__info">
+              <div class="house__title">
+                <span class="house__num">03</span>
+                <h3>Casa Aloe</h3>
+                <p class="house__guests">Per 2 / 4 persone</p>
+              </div>
+              <ul class="house__features">
+                  <li>Camera da letto con balcone privato, vista mare e vasca da bagno</li>
+                  <li>Divano letto nel living</li>
+                  <li>Bagno completo</li>
+                  <li>Cucina</li>
+              </ul>
+              <div class="house__actions">
+                <a href="#prenota" class="btn btn--dark" data-book="Casa Aloe">Richiedi disponibilità</a>
+                <button class="btn btn--outline house__gallery-btn">Tutte le foto</button>
+              </div>
+            </div>
+          </article>
+          <article class="house" id="casa-timo" role="tabpanel" aria-labelledby="tab-timo" data-gallery="timo" data-count="10" data-name="Casa Timo" hidden>
+            <div class="mosaic">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Timo: Living con divano in muratura"><img src="assets/img/case/timo-1.jpg" alt="Casa Timo — Living con divano in muratura" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Timo: Tavolo da pranzo"><img src="assets/img/case/timo-2.jpg" alt="Casa Timo — Tavolo da pranzo" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Timo: Cucina in muratura"><img src="assets/img/case/timo-3.jpg" alt="Casa Timo — Cucina in muratura" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Timo: Bagno"><img src="assets/img/case/timo-4.jpg" alt="Casa Timo — Bagno" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Timo: Camera matrimoniale"><img src="assets/img/case/timo-5.jpg" alt="Casa Timo — Camera matrimoniale" loading="lazy">
+                <span class="mosaic__all">Vedi tutte le foto (10)</span></button>
+            </div>
+            <div class="house__info">
+              <div class="house__title">
+                <span class="house__num">04</span>
+                <h3>Casa Timo</h3>
+                <p class="house__guests">Per 4 / 5 persone</p>
+              </div>
+              <ul class="house__features">
+                  <li>Camera da letto con letto francese e balcone privato</li>
+                  <li>Camera da letto con vasca</li>
+                  <li>Divano in muratura con posto letto</li>
+                  <li>Bagno completo</li>
+                  <li>Living e balcone vista mare</li>
+                  <li>Cucina</li>
+              </ul>
+              <div class="house__actions">
+                <a href="#prenota" class="btn btn--dark" data-book="Casa Timo">Richiedi disponibilità</a>
+                <button class="btn btn--outline house__gallery-btn">Tutte le foto</button>
+              </div>
+            </div>
+          </article>
+          <article class="house" id="casa-ginestra" role="tabpanel" aria-labelledby="tab-ginestra" data-gallery="ginestra" data-count="8" data-name="Casa Ginestra" hidden>
+            <div class="mosaic">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Ginestra: Living luminoso"><img src="assets/img/case/ginestra-1.jpg" alt="Casa Ginestra — Living luminoso" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Ginestra: Divano in muratura"><img src="assets/img/case/ginestra-2.jpg" alt="Casa Ginestra — Divano in muratura" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Ginestra: Lavabo in ceramica"><img src="assets/img/case/ginestra-3.jpg" alt="Casa Ginestra — Lavabo in ceramica" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Ginestra: Camera con oblò"><img src="assets/img/case/ginestra-4.jpg" alt="Casa Ginestra — Camera con oblò" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Ginestra: Vasca in camera"><img src="assets/img/case/ginestra-5.jpg" alt="Casa Ginestra — Vasca in camera" loading="lazy">
+                <span class="mosaic__all">Vedi tutte le foto (8)</span></button>
+            </div>
+            <div class="house__info">
+              <div class="house__title">
+                <span class="house__num">05</span>
+                <h3>Casa Ginestra</h3>
+                <p class="house__guests">Per 4 / 5 persone</p>
+              </div>
+              <ul class="house__features">
+                  <li>Camera da letto con balcone privato, bagno privato e vasca in camera</li>
+                  <li>Seconda camera da letto</li>
+                  <li>Divano in muratura con posto letto</li>
+                  <li>Bagno completo</li>
+                  <li>Living e balcone vista mare</li>
+                  <li>Cucina</li>
+              </ul>
+              <div class="house__actions">
+                <a href="#prenota" class="btn btn--dark" data-book="Casa Ginestra">Richiedi disponibilità</a>
+                <button class="btn btn--outline house__gallery-btn">Tutte le foto</button>
+              </div>
+            </div>
+          </article>
+          <article class="house" id="casa-carubbo" role="tabpanel" aria-labelledby="tab-carubbo" data-gallery="carubbo" data-count="7" data-name="Casa Carubbo" hidden>
+            <div class="mosaic">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Carubbo: Living con vista mare"><img src="assets/img/case/carubbo-1.jpg" alt="Casa Carubbo — Living con vista mare" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Carubbo: Divano con cuscini blu"><img src="assets/img/case/carubbo-2.jpg" alt="Casa Carubbo — Divano con cuscini blu" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Carubbo: Nicchia con ceramiche siciliane"><img src="assets/img/case/carubbo-3.jpg" alt="Casa Carubbo — Nicchia con ceramiche siciliane" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Carubbo: Comò in legno"><img src="assets/img/case/carubbo-4.jpg" alt="Casa Carubbo — Comò in legno" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Carubbo: Camera con finestra sul mare"><img src="assets/img/case/carubbo-5.jpg" alt="Casa Carubbo — Camera con finestra sul mare" loading="lazy">
+                <span class="mosaic__all">Vedi tutte le foto (7)</span></button>
+            </div>
+            <div class="house__info">
+              <div class="house__title">
+                <span class="house__num">06</span>
+                <h3>Casa Carubbo</h3>
+                <p class="house__guests">Per 5 persone</p>
+              </div>
+              <ul class="house__features">
+                  <li>Casa su due livelli</li>
+                  <li>Piano terra: living e cucina</li>
+                  <li>Piano superiore: bagno completo e camera singola</li>
+                  <li>Camera matrimoniale con vasca e vista mare</li>
+                  <li>Camera matrimoniale con vista sulla strada di ingresso</li>
+              </ul>
+              <div class="house__actions">
+                <a href="#prenota" class="btn btn--dark" data-book="Casa Carubbo">Richiedi disponibilità</a>
+                <button class="btn btn--outline house__gallery-btn">Tutte le foto</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="amenities reveal">
+          <h3 class="amenities__title">Ogni casa è dotata di</h3>
+          <ul>
+            <li>Cucina super accessoriata con macchinetta del caffè, frigorifero, fornetto elettrico, piastra a induzione e bollitore</li>
+            <li>Aria condizionata in ogni ambiente, sia zona living che camere da letto</li>
+            <li>Biancheria da letto, asciugamani e telo mare inclusi</li>
+            <li>Kit di cortesia per gli ospiti</li>
+            <li>Vasca da bagno in camera da letto, per un tocco di relax e romanticismo</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIZI EXTRA -->
+    <section class="section servizi" id="servizi">
+      <div class="container">
+        <div class="servizi__head">
+          <div class="section__head section__head--light">
+            <p class="eyebrow reveal">I nostri servizi extra</p>
+            <h2 class="section__title reveal">Ogni dettaglio è pensato per creare un’esperienza unica e su misura</h2>
+            <p class="section__lead reveal">Scegli i nostri servizi esclusivi, pensati per rendere il tuo soggiorno perfetto.</p>
+          </div>
+          <div class="servizi__imgs reveal">
+            <figure class="ph"><img src="assets/img/colazione.jpg" alt="Colazione con prodotti locali" loading="lazy"></figure>
+            <figure class="ph"><img src="assets/img/massaggi.jpg" alt="Massaggio rilassante" loading="lazy"></figure>
+          </div>
+        </div>
+
+        <div class="services">
+          <article class="service reveal">
+            <span class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40"><path d="M8 20h22v2a8 8 0 0 1-8 8h-6a8 8 0 0 1-8-8Z M30 22h3a3 3 0 0 1 0 6h-4 M14 15c0-3 3-3 3-6 M20 15c0-3 3-3 3-6"/></svg>
+            </span>
+            <h3>Colazione</h3>
+            <p>Prodotti locali freschi serviti ogni mattina.</p>
+          </article>
+          <article class="service reveal">
+            <span class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40"><path d="M12 8v10a4 4 0 0 0 8 0V8 M16 8v24 M27 8c-3 2-4 6-4 10h4v14"/></svg>
+            </span>
+            <h3>Pranzi e cene private</h3>
+            <p>Cena a domicilio per scoprire la cucina siciliana.</p>
+          </article>
+          <article class="service reveal">
+            <span class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40"><path d="M6 27c4 0 4-3 7-3s3 3 7 3 4-3 7-3 3 3 7 3 M6 33c4 0 4-3 7-3s3 3 7 3 4-3 7-3 3 3 7 3 M20 6v15 M20 7l9 12h-9"/></svg>
+            </span>
+            <h3>Escursioni e gite in barca</h3>
+            <p>Per scoprire la costa siciliana da nuove prospettive.</p>
+          </article>
+          <article class="service reveal">
+            <span class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40"><path d="M10 6v20a6 6 0 0 0 12 0v-3 M22 23l-3 3 M10 6l20 10 M30 16v12 M28 30a2 2 0 1 0 4 0"/></svg>
+            </span>
+            <h3>Charter di pesca</h3>
+            <p>Un giorno in mare per gli appassionati della pesca.</p>
+          </article>
+          <article class="service reveal">
+            <span class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40"><path d="M20 8c-6 4-9 9-9 14a9 9 0 0 0 18 0c0-5-3-10-9-14Z M20 18v12"/></svg>
+            </span>
+            <h3>Massaggi</h3>
+            <p>Momenti di relax e benessere per il corpo e la mente.</p>
+          </article>
+          <article class="service reveal">
+            <span class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40"><path d="M5 26h30v-5l-4-1-4-6H14l-5 6-4 1Z M11 30a3 3 0 1 0 0 .1 M29 30a3 3 0 1 0 0 .1"/></svg>
+            </span>
+            <h3>Servizio driver</h3>
+            <p>Trasferimenti privati e tour organizzati.</p>
+          </article>
+          <article class="service reveal">
+            <span class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40"><path d="M9 6h22v28H9Z M9 13h22 M13 9.5h.1 M17 9.5h.1 M20 17a7 7 0 1 0 0 14 7 7 0 1 0 0-14 M15 25c2-2 4 0 6-1s3-2 4-1"/></svg>
+            </span>
+            <h3>Servizio lavanderia</h3>
+            <p>Per sentirti sempre a casa, anche lontano.</p>
+          </article>
+          <a href="#prenota" class="service service--cta reveal">
+            <h3>Richiedi un servizio</h3>
+            <p>Indicaci nel modulo i servizi che desideri: organizziamo tutto per te.</p>
+            <span class="service__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERIA -->
+    <section class="section galleria" id="galleria">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow reveal">Galleria</p>
+          <h2 class="section__title reveal">Voci di calce, vento e salsedine</h2>
+        </div>
+        <div class="gallery" id="gallery">
+          <button class="gallery__item gallery__item--tall ph"><img src="assets/img/galleria-1.jpg" alt="Colazione davanti alla finestra sul mare" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-2.jpg" alt="Vasca da bagno in camera" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-3.jpg" alt="Nicchia con ceramiche siciliane" loading="lazy"></button>
+          <button class="gallery__item gallery__item--wide ph"><img src="assets/img/galleria-4.jpg" alt="Camera da letto matrimoniale" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-5.jpg" alt="Lavabo in ceramica e specchio tondo" loading="lazy"></button>
+          <button class="gallery__item gallery__item--tall ph"><img src="assets/img/galleria-6.jpg" alt="Tavolo sul balcone con vista sul porto" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-7.jpg" alt="Cucina in muratura con piastra a induzione" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-8.jpg" alt="Limoni e prodotti locali in cucina" loading="lazy"></button>
+          <button class="gallery__item gallery__item--wide ph"><img src="assets/img/galleria-9.jpg" alt="Camera con finestra sul mare" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATTI + MAPPA -->
+    <section class="section contatti" id="contatti">
+      <div class="container contatti__grid">
+        <div class="contatti__info">
+          <p class="eyebrow reveal">Contatti</p>
+          <h2 class="section__title reveal">Dove siamo</h2>
+          <address class="reveal">
+            <p><span class="label">Indirizzo</span>Via Principe San Vincenzo, snc<br>90019 San Nicola L’Arena — Trabia (PA)</p>
+            <p><span class="label">Telefono</span><a href="tel:+393456920384">+39 345 692 03 84</a></p>
+            <p><span class="label">WhatsApp</span><a href="https://wa.me/393456920384" target="_blank" rel="noopener">Scrivici su WhatsApp</a></p>
+            <p><span class="label">Email</span><a href="mailto:almariacasemediterranee@gmail.com">almariacasemediterranee@gmail.com</a></p>
+            <p><span class="label">Instagram</span><a href="https://www.instagram.com/almariacasemediterranee/" target="_blank" rel="noopener">@almariacasemediterranee</a></p>
+          </address>
+          <a class="btn btn--outline reveal" href="https://www.google.com/maps/search/?api=1&query=Via+Principe+San+Vincenzo+90019+San+Nicola+L%27Arena+Trabia" target="_blank" rel="noopener">Indicazioni stradali</a>
+        </div>
+        <div class="map reveal">
+          <iframe
+            title="Mappa di Almarìa Case Mediterranee, San Nicola L'Arena"
+            src="https://www.google.com/maps?q=Via+Principe+San+Vincenzo,+90019+San+Nicola+L%27Arena,+Trabia+PA&z=16&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM CONTATTO -->
+    <section class="section prenota" id="prenota">
+      <div class="container prenota__inner">
+        <div class="section__head">
+          <p class="eyebrow reveal">Richiesta di disponibilità</p>
+          <h2 class="section__title reveal">Scriveteci</h2>
+          <p class="section__lead reveal">Indicateci date, numero di ospiti e la casa che preferite: vi risponderemo al più presto con disponibilità e proposta.</p>
+        </div>
+
+        <form class="form reveal" id="contact-form" novalidate>
+          <div class="form__row">
+            <label class="field">
+              <span>Nome e cognome *</span>
+              <input type="text" name="nome" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span>Email *</span>
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+          </div>
+          <div class="form__row">
+            <label class="field">
+              <span>Telefono</span>
+              <input type="tel" name="telefono" autocomplete="tel">
+            </label>
+            <label class="field">
+              <span>Casa</span>
+              <select name="appartamento">
+                <option value="">Nessuna preferenza</option>
+                <option>Casa Agave (2–4 persone)</option>
+                <option>Casa Mirto (2 persone)</option>
+                <option>Casa Aloe (2–4 persone)</option>
+                <option>Casa Timo (4–5 persone)</option>
+                <option>Casa Ginestra (4–5 persone)</option>
+                <option>Casa Carubbo (5 persone)</option>
+              </select>
+            </label>
+          </div>
+          <div class="form__row form__row--3">
+            <label class="field">
+              <span>Arrivo *</span>
+              <input type="date" name="arrivo" required>
+            </label>
+            <label class="field">
+              <span>Partenza *</span>
+              <input type="date" name="partenza" required>
+            </label>
+            <label class="field">
+              <span>Ospiti</span>
+              <select name="ospiti">
+                <option>1</option><option selected>2</option><option>3</option>
+                <option>4</option><option>5</option><option>Più di 5</option>
+              </select>
+            </label>
+          </div>
+          <fieldset class="extras">
+            <legend>Servizi extra di interesse</legend>
+            <label class="chip"><input type="checkbox" name="servizi" value="Colazione"><span>Colazione</span></label>
+            <label class="chip"><input type="checkbox" name="servizi" value="Pranzi e cene private"><span>Pranzi e cene private</span></label>
+            <label class="chip"><input type="checkbox" name="servizi" value="Escursioni e gite in barca"><span>Gite in barca</span></label>
+            <label class="chip"><input type="checkbox" name="servizi" value="Charter di pesca"><span>Charter di pesca</span></label>
+            <label class="chip"><input type="checkbox" name="servizi" value="Massaggi"><span>Massaggi</span></label>
+            <label class="chip"><input type="checkbox" name="servizi" value="Servizio driver"><span>Driver</span></label>
+            <label class="chip"><input type="checkbox" name="servizi" value="Servizio lavanderia"><span>Lavanderia</span></label>
+          </fieldset>
+          <label class="field">
+            <span>Messaggio</span>
+            <textarea name="messaggio" rows="5" placeholder="Richieste particolari, orario di arrivo…"></textarea>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="privacy" required>
+            <span>Ho letto e accetto l'<a href="#">informativa privacy</a> *</span>
+          </label>
+          <button type="submit" class="btn btn--dark">Invia richiesta</button>
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#top" class="footer__brand" aria-label="Almarìa, torna all'inizio">
+        <svg class="footer__mark" aria-hidden="true"><use href="#almaria-mark"/></svg>
+        <span class="footer__name">Almarìa</span>
+        <span class="footer__tag">Case Mediterranee</span>
+      </a>
+
+      <nav class="footer__nav" aria-label="Link del footer">
+        <a href="#chi-siamo">Chi siamo</a>
+        <a href="#struttura">Le case</a>
+        <a href="#servizi">Servizi</a>
+        <a href="#galleria">Galleria</a>
+        <a href="#prenota">Prenota</a>
+      </nav>
+
+      <p class="footer__contacts">
+        Via Principe San Vincenzo, snc · 90019 San Nicola L’Arena — Trabia (PA)<br>
+        <a href="tel:+393456920384">+39 345 692 03 84</a> ·
+        <a href="mailto:almariacasemediterranee@gmail.com">almariacasemediterranee@gmail.com</a> ·
+        <a href="https://www.instagram.com/almariacasemediterranee/" target="_blank" rel="noopener">Instagram</a>
+      </p>
+      <!-- Inserire qui il CIN (Codice Identificativo Nazionale) delle strutture -->
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> Almarìa Case Mediterranee · <a href="#">Privacy</a> · <a href="#">Cookie</a></p>
+      <p class="footer__credit">Web by <a href="https://www.instagram.com/_matteomarino/" target="_blank" rel="noopener">Matteo Marino</a></p>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galleria fotografica" hidden>
+    <button class="lightbox__close" aria-label="Chiudi">×</button>
+    <button class="lightbox__nav lightbox__prev" aria-label="Foto precedente">‹</button>
+    <img class="lightbox__img" alt="">
+    <button class="lightbox__nav lightbox__next" aria-label="Foto successiva">›</button>
+    <p class="lightbox__caption"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
