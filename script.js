@@ -9,79 +9,101 @@
 
   document.documentElement.classList.remove("no-js");
 
-  /* ---------- Header: stato allo scroll ---------- */
+  /* ---------- Header + logo dell'hero che "vola" nell'header ----------
+     Tutto in un solo ciclo requestAnimationFrame, senza letture di layout
+     durante lo scroll (le misure si prendono una volta e si ricalcolano
+     solo se cambia la larghezza della finestra). */
   var header = document.getElementById("header");
   var heroBrandEl = document.querySelector(".hero__brand");
-  function onScroll() {
-    header.classList.toggle("is-scrolled", window.scrollY > 10);
-    // header chiaro/trasparente finché la foto dell'hero è sotto di lui
-    if (heroBrandEl) header.classList.toggle("on-hero", heroBrandEl.getBoundingClientRect().bottom > header.offsetHeight);
-  }
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-
-  /* ---------- Logo dell'hero che "vola" nell'header ---------- */
   var heroLogo = document.getElementById("hero-logo");
   var headerBrand = header.querySelector(".header__brand");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  if (heroLogo && headerBrand) {
-    var heroTag = heroLogo.querySelector(".hero__tag");
-    var heroLead = document.querySelector(".hero__brand .hero__lead");
-    var heroScroll = document.querySelector(".hero__scroll");
-    var start, target, distance;
+  var heroTag = heroLogo && heroLogo.querySelector(".hero__tag");
+  var heroLead = document.querySelector(".hero__brand .hero__lead");
+  var heroScroll = document.querySelector(".hero__scroll");
+  var slot = heroLogo && heroLogo.parentElement;
+  var headerH = header.offsetHeight;
+  var heroBottom = 0, start = null, target = null, distance = 1;
+  var lastWidth = window.innerWidth;
+  var ticking = false;
 
-    document.documentElement.classList.add("js-brand");
+  var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
+  var ease = function (t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
 
-    var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
-    var ease = function (t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
+  if (heroLogo && headerBrand) document.documentElement.classList.add("js-brand");
 
-    var measure = function () {
-      heroLogo.style.transform = "none";
-      var r = heroLogo.getBoundingClientRect();
-      var hb = headerBrand.getBoundingClientRect();
-      start = { x: r.left + r.width / 2, y: r.top + window.scrollY + r.height / 2, h: r.height };
-      target = { x: hb.left + hb.width / 2, y: header.offsetHeight / 2, h: header.offsetHeight * 0.82 };
-      // il viaggio dura finché la sezione del logo esce dallo schermo
-      var brand = heroLogo.parentElement.getBoundingClientRect();
-      var brandBottom = brand.bottom + window.scrollY;
-      distance = Math.max(start.y - target.y, brandBottom - header.offsetHeight - window.innerHeight * 0.25, 1);
-      update();
-    };
+  function measure() {
+    headerH = header.offsetHeight;
+    var y = window.scrollY;
+    if (heroBrandEl) heroBottom = heroBrandEl.getBoundingClientRect().bottom + y;
+    if (!heroLogo || !headerBrand || reduceMotion) return;
 
-    var update = function () {
-      var y = window.scrollY;
-      var p = clamp(y / distance, 0, 1);
+    // rimetto il logo nella sua posizione naturale per misurarlo
+    heroLogo.classList.remove("is-flying");
+    heroLogo.style.transform = "";
+    heroLogo.style.width = "";
+    slot.style.height = "";
+    var r = heroLogo.getBoundingClientRect();
+    var hb = headerBrand.getBoundingClientRect();
+    start = { x: r.left + r.width / 2, y: r.top + y + r.height / 2, w: r.width, h: r.height };
+    target = { x: hb.left + hb.width / 2, y: headerH / 2, h: headerH * 0.82 };
+    distance = Math.max(start.y - target.y, heroBottom - headerH - window.innerHeight * 0.25, 1);
 
-      if (reduceMotion) {
-        header.classList.toggle("show-brand", p >= 1);
-        return;
-      }
-
-      var e = ease(p);
-      var tx = (target.x - start.x) * e;
-      var desiredY = start.y + (target.y - start.y) * e;   // posizione voluta (viewport)
-      var ty = desiredY - (start.y - y);                   // differenza dalla posizione naturale
-      var scale = 1 + (target.h / start.h - 1) * e;
-      heroLogo.style.transform = "translate3d(" + tx + "px," + ty + "px,0) scale(" + scale + ")";
-
-      // dissolvenza finale: il logo dell'hero lascia il posto a quello dell'header
-      var fade = p < .88 ? 1 : 1 - (p - .88) / .12;
-      heroLogo.style.opacity = fade;
-      heroLogo.style.visibility = p >= 1 ? "hidden" : "visible";
-      header.classList.toggle("show-brand", p >= .9);
-
-      if (heroTag) heroTag.style.opacity = clamp(1 - e * 1.6, 0, 1);
-      if (heroLead) heroLead.style.opacity = clamp(1 - p * 3, 0, 1);
-      if (heroScroll) heroScroll.style.opacity = clamp(1 - p * 4, 0, 1);
-    };
-
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", measure);
-    window.addEventListener("load", measure);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
-    measure();
+    // da qui in poi il logo è "fixed": lo muove solo lo script, niente conflitti con lo scroll
+    slot.style.height = r.height + "px";
+    heroLogo.style.width = r.width + "px";
+    heroLogo.classList.add("is-flying");
   }
+
+  function frame() {
+    ticking = false;
+    var y = window.scrollY;
+
+    header.classList.toggle("is-scrolled", y > 10);
+    header.classList.toggle("on-hero", y + headerH < heroBottom);
+
+    if (!heroLogo || !headerBrand) return;
+    var p = clamp(y / distance, 0, 1);
+
+    if (reduceMotion || !start) {
+      header.classList.toggle("show-brand", y + headerH > heroBottom - 40);
+      return;
+    }
+
+    var e = ease(p);
+    var cx = start.x + (target.x - start.x) * e;
+    var cy = start.y + (target.y - start.y) * e; // posizione nel viewport
+    var scale = 1 + (target.h / start.h - 1) * e;
+    heroLogo.style.transform =
+      "translate3d(" + (cx - start.w / 2).toFixed(1) + "px," + (cy - start.h / 2).toFixed(1) + "px,0) scale(" + scale.toFixed(4) + ")";
+
+    var fade = p < .88 ? 1 : 1 - (p - .88) / .12;
+    heroLogo.style.opacity = fade;
+    heroLogo.style.visibility = p >= 1 ? "hidden" : "visible";
+    header.classList.toggle("show-brand", p >= .9);
+
+    if (heroTag) heroTag.style.opacity = clamp(1 - e * 1.6, 0, 1);
+    if (heroLead) heroLead.style.opacity = clamp(1 - p * 3, 0, 1);
+    if (heroScroll) heroScroll.style.opacity = clamp(1 - p * 4, 0, 1);
+  }
+
+  function requestFrame() {
+    if (!ticking) { ticking = true; requestAnimationFrame(frame); }
+  }
+
+  window.addEventListener("scroll", requestFrame, { passive: true });
+  // su mobile la barra dell'indirizzo cambia l'altezza durante lo scroll:
+  // ricalcolo solo se cambia davvero la larghezza (rotazione, finestra ridimensionata)
+  window.addEventListener("resize", function () {
+    if (window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+    measure(); frame();
+  });
+  window.addEventListener("load", function () { measure(); frame(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { measure(); frame(); });
+  measure();
+  frame();
 
   /* ---------- Menu mobile ---------- */
   var burger = document.getElementById("burger");
@@ -190,7 +212,7 @@
       var available = galleryItems.filter(function (b) { return !b.classList.contains("is-missing"); });
       var list = available.map(function (b) {
         var img = b.querySelector("img");
-        return { src: img.currentSrc || img.src, alt: img.alt };
+        return { src: (img.currentSrc || img.src).replace(/-800\.webp$/, ".webp"), alt: img.alt };
       });
       openLightbox(list, available.indexOf(btn));
     });
@@ -203,7 +225,7 @@
     var name = house.getAttribute("data-name") || "";
     var list = [];
     for (var i = 1; i <= count; i++) {
-      list.push({ src: "assets/img/case/" + key + "-" + i + ".jpg", alt: name });
+      list.push({ src: "assets/img/case/" + key + "-" + i + ".webp", alt: name });
     }
     house.querySelectorAll(".mosaic__item").forEach(function (item) {
       item.addEventListener("click", function (e) {

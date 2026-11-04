@@ -192,7 +192,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
   color: var(--cream);
   background:
     linear-gradient(180deg, rgba(20, 18, 16, .42) 0%, rgba(20, 18, 16, .22) 45%, rgba(20, 18, 16, .5) 100%),
-    url("assets/img/hero.jpg") center 60% / cover no-repeat;
+    url("assets/img/hero.webp") center 60% / cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -201,6 +201,10 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
   padding: calc(var(--header-h) + 20px) var(--gutter) 80px;
   position: relative;
 }
+.hero__logo-slot { position: relative; display: flex; justify-content: center; width: 100%; }
+/* mentre vola il logo è fixed e lo muove solo lo script */
+.hero__logo.is-flying { position: fixed; left: 0; top: 0; margin: 0; backface-visibility: hidden; }
+.hero__tag { will-change: opacity; }
 .hero__logo {
   position: relative;
   z-index: 60;
@@ -212,7 +216,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
   transform-origin: 50% 50%;
   will-change: transform, opacity;
 }
-.hero__mark { width: clamp(130px, 15vw, 210px); height: clamp(162px, 18.75vw, 262px); color: var(--cream); filter: drop-shadow(0 2px 14px rgba(0,0,0,.25)); }
+.hero__mark { width: clamp(130px, 15vw, 210px); height: clamp(162px, 18.75vw, 262px); color: var(--cream); }
 .hero__wordmark, .hero__tag { text-shadow: 0 2px 18px rgba(0,0,0,.3); }
 .hero__wordmark {
   font-family: var(--serif);
@@ -732,6 +736,15 @@ body.menu-open .wa-float { opacity: 0; pointer-events: none; }
 
 @media (max-width: 860px) {
   :root { --header-h: 66px; }
+
+  /* foto dell'hero più leggera e niente blur costosi su mobile */
+  .hero__brand {
+    background:
+      linear-gradient(180deg, rgba(20, 18, 16, .42) 0%, rgba(20, 18, 16, .22) 45%, rgba(20, 18, 16, .55) 100%),
+      url("assets/img/hero-1200.webp") center 60% / cover no-repeat;
+  }
+  .header { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(248, 245, 238, .97); }
+  .wa-float { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--cream); }
 
   .burger { display: block; }
   .header__actions .btn { display: none; }

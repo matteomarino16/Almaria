@@ -16,7 +16,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/hero-1200.webp" media="(max-width: 860px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/hero.webp" media="(min-width: 861px)" fetchpriority="high">
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
@@ -95,11 +96,13 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero__brand">
-        <h1 class="hero__logo" id="hero-logo">
-          <svg class="hero__mark" aria-hidden="true"><use href="#almaria-mark"/></svg>
-          <span class="hero__wordmark">Almarìa</span>
-          <span class="hero__tag">Case Mediterranee</span>
-        </h1>
+        <div class="hero__logo-slot">
+          <h1 class="hero__logo" id="hero-logo">
+            <svg class="hero__mark" aria-hidden="true"><use href="#almaria-mark"/></svg>
+            <span class="hero__wordmark">Almarìa</span>
+            <span class="hero__tag">Case Mediterranee</span>
+          </h1>
+        </div>
         <p class="hero__lead">Il fascino autentico della Sicilia in un castello sul mare.</p>
         <a href="#chi-siamo" class="hero__scroll" aria-label="Scorri verso il basso"><span></span></a>
       </div>
@@ -124,7 +127,7 @@
           <p class="reveal">Chi arriva qui non cerca solo riposo, ma la distanza esatta tra il cielo e il mare, tra il dentro e il fuori, tra il tempo che era e quello che verrà.</p>
           <blockquote class="about__quote reveal">Perché Almarìa non è un luogo da vedere, ma un modo di ricordare ciò che si era dimenticato di sentire.</blockquote>
         </div>
-        <figure class="about__img ph reveal"><img src="assets/img/chi-siamo.jpg" alt="Nicchia ad arco con ceramiche e scrittoio in legno" loading="lazy"></figure>
+        <figure class="about__img ph reveal"><img src="assets/img/chi-siamo-800.webp" srcset="assets/img/chi-siamo-800.webp 800w, assets/img/chi-siamo.webp 1600w" sizes="(max-width: 860px) 100vw, 45vw" decoding="async" alt="Nicchia ad arco con ceramiche e scrittoio in legno" loading="lazy"></figure>
       </div>
     </section>
 
@@ -154,11 +157,11 @@
           </div>
           <article class="house is-active" id="casa-agave" role="tabpanel" aria-labelledby="tab-agave" data-gallery="agave" data-count="7" data-name="Casa Agave">
             <div class="mosaic">
-              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Agave: Living con divano e tavolino in legno"><img src="assets/img/case/agave-1.jpg" alt="Casa Agave — Living con divano e tavolino in legno"></button>
-              <button class="mosaic__item ph" data-index="1" aria-label="Casa Agave: Mensola con ceramiche e stampe"><img src="assets/img/case/agave-2.jpg" alt="Casa Agave — Mensola con ceramiche e stampe" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="2" aria-label="Casa Agave: Lavabo in ceramica e specchio tondo"><img src="assets/img/case/agave-3.jpg" alt="Casa Agave — Lavabo in ceramica e specchio tondo" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="3" aria-label="Casa Agave: Zona pranzo"><img src="assets/img/case/agave-4.jpg" alt="Casa Agave — Zona pranzo" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="4" aria-label="Casa Agave: Vasca da bagno in camera"><img src="assets/img/case/agave-5.jpg" alt="Casa Agave — Vasca da bagno in camera" loading="lazy">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Agave: Living con divano e tavolino in legno"><img src="assets/img/case/agave-1-800.webp" srcset="assets/img/case/agave-1-800.webp 800w, assets/img/case/agave-1.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="Casa Agave — Living con divano e tavolino in legno"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Agave: Mensola con ceramiche e stampe"><img src="assets/img/case/agave-2-800.webp" srcset="assets/img/case/agave-2-800.webp 800w, assets/img/case/agave-2.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Agave — Mensola con ceramiche e stampe" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Agave: Lavabo in ceramica e specchio tondo"><img src="assets/img/case/agave-3-800.webp" srcset="assets/img/case/agave-3-800.webp 800w, assets/img/case/agave-3.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Agave — Lavabo in ceramica e specchio tondo" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Agave: Zona pranzo"><img src="assets/img/case/agave-4-800.webp" srcset="assets/img/case/agave-4-800.webp 800w, assets/img/case/agave-4.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Agave — Zona pranzo" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Agave: Vasca da bagno in camera"><img src="assets/img/case/agave-5-800.webp" srcset="assets/img/case/agave-5-800.webp 800w, assets/img/case/agave-5.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Agave — Vasca da bagno in camera" loading="lazy">
                 <span class="mosaic__all">Vedi tutte le foto (7)</span></button>
             </div>
             <div class="house__info">
@@ -181,11 +184,11 @@
           </article>
           <article class="house" id="casa-mirto" role="tabpanel" aria-labelledby="tab-mirto" data-gallery="mirto" data-count="6" data-name="Casa Mirto" hidden>
             <div class="mosaic">
-              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Mirto: Suite matrimoniale"><img src="assets/img/case/mirto-1.jpg" alt="Casa Mirto — Suite matrimoniale" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="1" aria-label="Casa Mirto: Scrittoio con sedie impagliate"><img src="assets/img/case/mirto-2.jpg" alt="Casa Mirto — Scrittoio con sedie impagliate" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="2" aria-label="Casa Mirto: Letto matrimoniale"><img src="assets/img/case/mirto-3.jpg" alt="Casa Mirto — Letto matrimoniale" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="3" aria-label="Casa Mirto: Bagno con lavabo in ceramica"><img src="assets/img/case/mirto-4.jpg" alt="Casa Mirto — Bagno con lavabo in ceramica" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="4" aria-label="Casa Mirto: Balcone con vista sul porto"><img src="assets/img/case/mirto-5.jpg" alt="Casa Mirto — Balcone con vista sul porto" loading="lazy">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Mirto: Suite matrimoniale"><img src="assets/img/case/mirto-1-800.webp" srcset="assets/img/case/mirto-1-800.webp 800w, assets/img/case/mirto-1.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="Casa Mirto — Suite matrimoniale" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Mirto: Scrittoio con sedie impagliate"><img src="assets/img/case/mirto-2-800.webp" srcset="assets/img/case/mirto-2-800.webp 800w, assets/img/case/mirto-2.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Mirto — Scrittoio con sedie impagliate" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Mirto: Letto matrimoniale"><img src="assets/img/case/mirto-3-800.webp" srcset="assets/img/case/mirto-3-800.webp 800w, assets/img/case/mirto-3.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Mirto — Letto matrimoniale" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Mirto: Bagno con lavabo in ceramica"><img src="assets/img/case/mirto-4-800.webp" srcset="assets/img/case/mirto-4-800.webp 800w, assets/img/case/mirto-4.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Mirto — Bagno con lavabo in ceramica" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Mirto: Balcone con vista sul porto"><img src="assets/img/case/mirto-5-800.webp" srcset="assets/img/case/mirto-5-800.webp 800w, assets/img/case/mirto-5.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Mirto — Balcone con vista sul porto" loading="lazy">
                 <span class="mosaic__all">Vedi tutte le foto (6)</span></button>
             </div>
             <div class="house__info">
@@ -207,11 +210,11 @@
           </article>
           <article class="house" id="casa-aloe" role="tabpanel" aria-labelledby="tab-aloe" data-gallery="aloe" data-count="7" data-name="Casa Aloe" hidden>
             <div class="mosaic">
-              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Aloe: Living con poltrona in paglia"><img src="assets/img/case/aloe-1.jpg" alt="Casa Aloe — Living con poltrona in paglia" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="1" aria-label="Casa Aloe: Camera da letto"><img src="assets/img/case/aloe-2.jpg" alt="Casa Aloe — Camera da letto" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="2" aria-label="Casa Aloe: Dettagli in terracotta"><img src="assets/img/case/aloe-3.jpg" alt="Casa Aloe — Dettagli in terracotta" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="3" aria-label="Casa Aloe: Nicchia ad arco con scrittoio"><img src="assets/img/case/aloe-4.jpg" alt="Casa Aloe — Nicchia ad arco con scrittoio" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="4" aria-label="Casa Aloe: Balcone vista mare"><img src="assets/img/case/aloe-5.jpg" alt="Casa Aloe — Balcone vista mare" loading="lazy">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Aloe: Living con poltrona in paglia"><img src="assets/img/case/aloe-1-800.webp" srcset="assets/img/case/aloe-1-800.webp 800w, assets/img/case/aloe-1.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="Casa Aloe — Living con poltrona in paglia" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Aloe: Camera da letto"><img src="assets/img/case/aloe-2-800.webp" srcset="assets/img/case/aloe-2-800.webp 800w, assets/img/case/aloe-2.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Aloe — Camera da letto" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Aloe: Dettagli in terracotta"><img src="assets/img/case/aloe-3-800.webp" srcset="assets/img/case/aloe-3-800.webp 800w, assets/img/case/aloe-3.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Aloe — Dettagli in terracotta" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Aloe: Nicchia ad arco con scrittoio"><img src="assets/img/case/aloe-4-800.webp" srcset="assets/img/case/aloe-4-800.webp 800w, assets/img/case/aloe-4.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Aloe — Nicchia ad arco con scrittoio" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Aloe: Balcone vista mare"><img src="assets/img/case/aloe-5-800.webp" srcset="assets/img/case/aloe-5-800.webp 800w, assets/img/case/aloe-5.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Aloe — Balcone vista mare" loading="lazy">
                 <span class="mosaic__all">Vedi tutte le foto (7)</span></button>
             </div>
             <div class="house__info">
@@ -234,11 +237,11 @@
           </article>
           <article class="house" id="casa-timo" role="tabpanel" aria-labelledby="tab-timo" data-gallery="timo" data-count="10" data-name="Casa Timo" hidden>
             <div class="mosaic">
-              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Timo: Living con divano in muratura"><img src="assets/img/case/timo-1.jpg" alt="Casa Timo — Living con divano in muratura" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="1" aria-label="Casa Timo: Tavolo da pranzo"><img src="assets/img/case/timo-2.jpg" alt="Casa Timo — Tavolo da pranzo" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="2" aria-label="Casa Timo: Cucina in muratura"><img src="assets/img/case/timo-3.jpg" alt="Casa Timo — Cucina in muratura" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="3" aria-label="Casa Timo: Bagno"><img src="assets/img/case/timo-4.jpg" alt="Casa Timo — Bagno" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="4" aria-label="Casa Timo: Camera matrimoniale"><img src="assets/img/case/timo-5.jpg" alt="Casa Timo — Camera matrimoniale" loading="lazy">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Timo: Living con divano in muratura"><img src="assets/img/case/timo-1-800.webp" srcset="assets/img/case/timo-1-800.webp 800w, assets/img/case/timo-1.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="Casa Timo — Living con divano in muratura" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Timo: Tavolo da pranzo"><img src="assets/img/case/timo-2-800.webp" srcset="assets/img/case/timo-2-800.webp 800w, assets/img/case/timo-2.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Timo — Tavolo da pranzo" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Timo: Cucina in muratura"><img src="assets/img/case/timo-3-800.webp" srcset="assets/img/case/timo-3-800.webp 800w, assets/img/case/timo-3.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Timo — Cucina in muratura" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Timo: Bagno"><img src="assets/img/case/timo-4-800.webp" srcset="assets/img/case/timo-4-800.webp 800w, assets/img/case/timo-4.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Timo — Bagno" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Timo: Camera matrimoniale"><img src="assets/img/case/timo-5-800.webp" srcset="assets/img/case/timo-5-800.webp 800w, assets/img/case/timo-5.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Timo — Camera matrimoniale" loading="lazy">
                 <span class="mosaic__all">Vedi tutte le foto (10)</span></button>
             </div>
             <div class="house__info">
@@ -263,11 +266,11 @@
           </article>
           <article class="house" id="casa-ginestra" role="tabpanel" aria-labelledby="tab-ginestra" data-gallery="ginestra" data-count="8" data-name="Casa Ginestra" hidden>
             <div class="mosaic">
-              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Ginestra: Living luminoso"><img src="assets/img/case/ginestra-1.jpg" alt="Casa Ginestra — Living luminoso" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="1" aria-label="Casa Ginestra: Divano in muratura"><img src="assets/img/case/ginestra-2.jpg" alt="Casa Ginestra — Divano in muratura" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="2" aria-label="Casa Ginestra: Lavabo in ceramica"><img src="assets/img/case/ginestra-3.jpg" alt="Casa Ginestra — Lavabo in ceramica" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="3" aria-label="Casa Ginestra: Camera con oblò"><img src="assets/img/case/ginestra-4.jpg" alt="Casa Ginestra — Camera con oblò" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="4" aria-label="Casa Ginestra: Vasca in camera"><img src="assets/img/case/ginestra-5.jpg" alt="Casa Ginestra — Vasca in camera" loading="lazy">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Ginestra: Living luminoso"><img src="assets/img/case/ginestra-1-800.webp" srcset="assets/img/case/ginestra-1-800.webp 800w, assets/img/case/ginestra-1.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="Casa Ginestra — Living luminoso" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Ginestra: Divano in muratura"><img src="assets/img/case/ginestra-2-800.webp" srcset="assets/img/case/ginestra-2-800.webp 800w, assets/img/case/ginestra-2.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Ginestra — Divano in muratura" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Ginestra: Lavabo in ceramica"><img src="assets/img/case/ginestra-3-800.webp" srcset="assets/img/case/ginestra-3-800.webp 800w, assets/img/case/ginestra-3.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Ginestra — Lavabo in ceramica" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Ginestra: Camera con oblò"><img src="assets/img/case/ginestra-4-800.webp" srcset="assets/img/case/ginestra-4-800.webp 800w, assets/img/case/ginestra-4.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Ginestra — Camera con oblò" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Ginestra: Vasca in camera"><img src="assets/img/case/ginestra-5-800.webp" srcset="assets/img/case/ginestra-5-800.webp 800w, assets/img/case/ginestra-5.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Ginestra — Vasca in camera" loading="lazy">
                 <span class="mosaic__all">Vedi tutte le foto (8)</span></button>
             </div>
             <div class="house__info">
@@ -292,11 +295,11 @@
           </article>
           <article class="house" id="casa-carubbo" role="tabpanel" aria-labelledby="tab-carubbo" data-gallery="carubbo" data-count="7" data-name="Casa Carubbo" hidden>
             <div class="mosaic">
-              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Carubbo: Living con vista mare"><img src="assets/img/case/carubbo-1.jpg" alt="Casa Carubbo — Living con vista mare" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="1" aria-label="Casa Carubbo: Divano con cuscini blu"><img src="assets/img/case/carubbo-2.jpg" alt="Casa Carubbo — Divano con cuscini blu" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="2" aria-label="Casa Carubbo: Nicchia con ceramiche siciliane"><img src="assets/img/case/carubbo-3.jpg" alt="Casa Carubbo — Nicchia con ceramiche siciliane" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="3" aria-label="Casa Carubbo: Comò in legno"><img src="assets/img/case/carubbo-4.jpg" alt="Casa Carubbo — Comò in legno" loading="lazy"></button>
-              <button class="mosaic__item ph" data-index="4" aria-label="Casa Carubbo: Camera con finestra sul mare"><img src="assets/img/case/carubbo-5.jpg" alt="Casa Carubbo — Camera con finestra sul mare" loading="lazy">
+              <button class="mosaic__item mosaic__main ph" data-index="0" aria-label="Casa Carubbo: Living con vista mare"><img src="assets/img/case/carubbo-1-800.webp" srcset="assets/img/case/carubbo-1-800.webp 800w, assets/img/case/carubbo-1.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="Casa Carubbo — Living con vista mare" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="1" aria-label="Casa Carubbo: Divano con cuscini blu"><img src="assets/img/case/carubbo-2-800.webp" srcset="assets/img/case/carubbo-2-800.webp 800w, assets/img/case/carubbo-2.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Carubbo — Divano con cuscini blu" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="2" aria-label="Casa Carubbo: Nicchia con ceramiche siciliane"><img src="assets/img/case/carubbo-3-800.webp" srcset="assets/img/case/carubbo-3-800.webp 800w, assets/img/case/carubbo-3.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Carubbo — Nicchia con ceramiche siciliane" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="3" aria-label="Casa Carubbo: Comò in legno"><img src="assets/img/case/carubbo-4-800.webp" srcset="assets/img/case/carubbo-4-800.webp 800w, assets/img/case/carubbo-4.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Carubbo — Comò in legno" loading="lazy"></button>
+              <button class="mosaic__item ph" data-index="4" aria-label="Casa Carubbo: Camera con finestra sul mare"><img src="assets/img/case/carubbo-5-800.webp" srcset="assets/img/case/carubbo-5-800.webp 800w, assets/img/case/carubbo-5.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Casa Carubbo — Camera con finestra sul mare" loading="lazy">
                 <span class="mosaic__all">Vedi tutte le foto (7)</span></button>
             </div>
             <div class="house__info">
@@ -343,8 +346,8 @@
             <p class="section__lead reveal">Scegli i nostri servizi esclusivi, pensati per rendere il tuo soggiorno perfetto.</p>
           </div>
           <div class="servizi__imgs reveal">
-            <figure class="ph"><img src="assets/img/colazione.jpg" alt="Colazione con prodotti locali" loading="lazy"></figure>
-            <figure class="ph"><img src="assets/img/massaggi.jpg" alt="Massaggio rilassante" loading="lazy"></figure>
+            <figure class="ph"><img src="assets/img/colazione-800.webp" srcset="assets/img/colazione-800.webp 800w, assets/img/colazione.webp 1600w" sizes="(max-width: 860px) 50vw, 22vw" decoding="async" alt="Colazione con prodotti locali" loading="lazy"></figure>
+            <figure class="ph"><img src="assets/img/massaggi-800.webp" srcset="assets/img/massaggi-800.webp 800w, assets/img/massaggi.webp 1600w" sizes="(max-width: 860px) 50vw, 22vw" decoding="async" alt="Massaggio rilassante" loading="lazy"></figure>
           </div>
         </div>
 
@@ -415,15 +418,15 @@
           <h2 class="section__title reveal">Voci di calce, vento e salsedine</h2>
         </div>
         <div class="gallery" id="gallery">
-          <button class="gallery__item gallery__item--tall ph"><img src="assets/img/galleria-1.jpg" alt="Colazione davanti alla finestra sul mare" loading="lazy"></button>
-          <button class="gallery__item ph"><img src="assets/img/galleria-2.jpg" alt="Vasca da bagno in camera" loading="lazy"></button>
-          <button class="gallery__item ph"><img src="assets/img/galleria-3.jpg" alt="Nicchia con ceramiche siciliane" loading="lazy"></button>
-          <button class="gallery__item gallery__item--wide ph"><img src="assets/img/galleria-4.jpg" alt="Camera da letto matrimoniale" loading="lazy"></button>
-          <button class="gallery__item ph"><img src="assets/img/galleria-5.jpg" alt="Lavabo in ceramica e specchio tondo" loading="lazy"></button>
-          <button class="gallery__item gallery__item--tall ph"><img src="assets/img/galleria-6.jpg" alt="Tavolo sul balcone con vista sul porto" loading="lazy"></button>
-          <button class="gallery__item ph"><img src="assets/img/galleria-7.jpg" alt="Cucina in muratura con piastra a induzione" loading="lazy"></button>
-          <button class="gallery__item ph"><img src="assets/img/galleria-8.jpg" alt="Limoni e prodotti locali in cucina" loading="lazy"></button>
-          <button class="gallery__item gallery__item--wide ph"><img src="assets/img/galleria-9.jpg" alt="Camera con finestra sul mare" loading="lazy"></button>
+          <button class="gallery__item gallery__item--tall ph"><img src="assets/img/galleria-1-800.webp" srcset="assets/img/galleria-1-800.webp 800w, assets/img/galleria-1.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Colazione davanti alla finestra sul mare" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-2-800.webp" srcset="assets/img/galleria-2-800.webp 800w, assets/img/galleria-2.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Vasca da bagno in camera" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-3-800.webp" srcset="assets/img/galleria-3-800.webp 800w, assets/img/galleria-3.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Nicchia con ceramiche siciliane" loading="lazy"></button>
+          <button class="gallery__item gallery__item--wide ph"><img src="assets/img/galleria-4-800.webp" srcset="assets/img/galleria-4-800.webp 800w, assets/img/galleria-4.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="Camera da letto matrimoniale" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-5-800.webp" srcset="assets/img/galleria-5-800.webp 800w, assets/img/galleria-5.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Lavabo in ceramica e specchio tondo" loading="lazy"></button>
+          <button class="gallery__item gallery__item--tall ph"><img src="assets/img/galleria-6-800.webp" srcset="assets/img/galleria-6-800.webp 800w, assets/img/galleria-6.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Tavolo sul balcone con vista sul porto" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-7-800.webp" srcset="assets/img/galleria-7-800.webp 800w, assets/img/galleria-7.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Cucina in muratura con piastra a induzione" loading="lazy"></button>
+          <button class="gallery__item ph"><img src="assets/img/galleria-8-800.webp" srcset="assets/img/galleria-8-800.webp 800w, assets/img/galleria-8.webp 1600w" sizes="(max-width: 860px) 50vw, 25vw" decoding="async" alt="Limoni e prodotti locali in cucina" loading="lazy"></button>
+          <button class="gallery__item gallery__item--wide ph"><img src="assets/img/galleria-9-800.webp" srcset="assets/img/galleria-9-800.webp 800w, assets/img/galleria-9.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" decoding="async" alt="Camera con finestra sul mare" loading="lazy"></button>
         </div>
       </div>
     </section>
