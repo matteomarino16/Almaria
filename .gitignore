@@ -3,3 +3,6 @@ _materiali/
 
 # File di sistema macOS
 .DS_Store
+
+# Configurazione locale di Claude Code
+.claude/
