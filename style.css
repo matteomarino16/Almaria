@@ -715,6 +715,19 @@ body.menu-open .wa-float { opacity: 0; pointer-events: none; }
 .reveal.is-visible { opacity: 1; transform: none; }
 .no-js .reveal { opacity: 1; transform: none; }
 
+/* mobile: il logo esce scorrendo con una dissolvenza gestita dal browser
+   (scroll-driven animation, gira fuori dal thread principale) */
+@media (max-width: 860px) and (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .hero__logo-slot, .hero__brand .hero__lead {
+      animation: hero-out linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+@keyframes hero-out { to { opacity: 0; transform: translateY(-30px) scale(.9); } }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .hero__scroll span { animation: none; top: 0; }

@@ -18,6 +18,9 @@
   var heroLogo = document.getElementById("hero-logo");
   var headerBrand = header.querySelector(".header__brand");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // su mobile il logo non "vola": scorre con la pagina (animazione solo CSS, fluida)
+  var desktopMQ = window.matchMedia("(min-width: 861px)");
+  var noFly = function () { return reduceMotion || !desktopMQ.matches; };
 
   var heroTag = heroLogo && heroLogo.querySelector(".hero__tag");
   var heroLead = document.querySelector(".hero__brand .hero__lead");
@@ -37,13 +40,19 @@
     headerH = header.offsetHeight;
     var y = window.scrollY;
     if (heroBrandEl) heroBottom = heroBrandEl.getBoundingClientRect().bottom + y;
-    if (!heroLogo || !headerBrand || reduceMotion) return;
+    if (!heroLogo || !headerBrand) return;
 
     // rimetto il logo nella sua posizione naturale per misurarlo
     heroLogo.classList.remove("is-flying");
     heroLogo.style.transform = "";
     heroLogo.style.width = "";
+    heroLogo.style.opacity = "";
+    heroLogo.style.visibility = "";
     slot.style.height = "";
+    if (heroTag) heroTag.style.opacity = "";
+    if (heroLead) heroLead.style.opacity = "";
+    if (heroScroll) heroScroll.style.opacity = "";
+    if (noFly()) { start = null; return; }
     var r = heroLogo.getBoundingClientRect();
     var hb = headerBrand.getBoundingClientRect();
     start = { x: r.left + r.width / 2, y: r.top + y + r.height / 2, w: r.width, h: r.height };
@@ -66,7 +75,7 @@
     if (!heroLogo || !headerBrand) return;
     var p = clamp(y / distance, 0, 1);
 
-    if (reduceMotion || !start) {
+    if (!start) {
       header.classList.toggle("show-brand", y + headerH > heroBottom - 40);
       return;
     }
@@ -153,7 +162,7 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
     reveals.forEach(function (el) { io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add("is-visible"); });
