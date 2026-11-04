@@ -603,6 +603,42 @@ body.menu-open .hero__logo { visibility: hidden !important; }
 .footer__credit a { color: var(--ink); border-bottom: 1px solid var(--line); }
 .footer__credit a:hover { border-color: var(--ink); }
 
+/* ---------- Pagine Privacy e Cookie ---------- */
+.legal { padding: calc(var(--header-h) + clamp(50px, 8vw, 100px)) var(--gutter) clamp(70px, 10vw, 120px); }
+.legal__inner { max-width: 780px; margin: 0 auto; }
+.legal h1 { font-size: clamp(42px, 6vw, 68px); margin-bottom: 10px; }
+.legal__updated { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); margin: 0 0 40px; }
+.legal h2 { font-size: clamp(26px, 3vw, 32px); margin: 50px 0 14px; padding-top: 26px; border-top: 1px solid var(--line); }
+.legal p, .legal li { color: var(--ink-soft); }
+.legal strong { color: var(--ink); font-weight: 500; }
+.legal ul { padding-left: 20px; }
+.legal li { margin-bottom: 8px; }
+.legal a { text-decoration: none; border-bottom: 1px solid var(--line); color: var(--ink); transition: border-color .3s; }
+.legal a:hover { border-color: var(--ink); }
+.legal__table-wrap { overflow-x: auto; margin: 18px 0; }
+.legal__table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 520px; }
+.legal__table th { text-align: left; font-family: var(--sans); font-weight: 400; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); padding: 10px 12px; border-bottom: 1px solid var(--ink); }
+.legal__table td { padding: 14px 12px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink-soft); line-height: 1.55; }
+.legal__table small { color: var(--stone); }
+.todo { background: #f3e1d6; color: var(--terracotta); padding: 1px 6px; border-radius: 3px; font-size: .9em; }
+.legal-page .footer__inner { gap: 24px; }
+
+/* ---------- Mappa caricata solo su richiesta ---------- */
+.map__placeholder {
+  position: relative;
+  height: 100%; min-height: inherit;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  padding: 30px; text-align: center;
+  background:
+    linear-gradient(rgba(239, 233, 221, .55), rgba(239, 233, 221, .55)),
+    repeating-linear-gradient(0deg, transparent 0 38px, rgba(20, 18, 16, .05) 38px 39px),
+    repeating-linear-gradient(90deg, transparent 0 38px, rgba(20, 18, 16, .05) 38px 39px),
+    var(--cream-2);
+}
+.map__pin { width: 34px; height: 34px; color: var(--terracotta); }
+.map__note { margin: 0; max-width: 340px; font-size: 13px; line-height: 1.6; color: var(--ink-soft); }
+.map__note a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
 /* ---------- Pulsante WhatsApp ---------- */
 .wa-float {
   position: fixed;
@@ -761,6 +797,7 @@ body.menu-open .wa-float { opacity: 0; pointer-events: none; }
 
   .burger { display: block; }
   .header__actions .btn { display: none; }
+  .legal__back { padding: 9px 14px; font-size: 11px; }
 
   /* menu mobile: pannello laterale da destra */
   .nav {
@@ -869,7 +906,15 @@ body.menu-open .wa-float { opacity: 0; pointer-events: none; }
   .servizi__imgs figure { aspect-ratio: 1 / 1; }
   .servizi__imgs figure:last-child { margin-top: 24px; }
   .house__actions .btn { flex: 1 1 100%; }
-  .mosaic__all { right: 10px; bottom: 10px; padding: 8px 12px; font-size: 11px; }
+  .mosaic__all {
+    left: 8px; right: 8px; bottom: 8px;
+    padding: 9px 6px;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .mosaic__all-pre { display: none; }
   .amenities ul { grid-template-columns: 1fr; }
   .form__row, .form__row--3 { grid-template-columns: 1fr; }
   .form .btn { justify-self: stretch; }

@@ -396,6 +396,21 @@
     form.reset();
   });
 
+  /* ---------- Mappa Google su richiesta ---------- */
+  var mapBtn = document.getElementById("map-load");
+  if (mapBtn) {
+    mapBtn.addEventListener("click", function () {
+      var ph = document.getElementById("map-placeholder");
+      var iframe = document.createElement("iframe");
+      iframe.title = "Mappa di Almarìa Case Mediterranee, San Nicola L'Arena";
+      iframe.src = ph.getAttribute("data-src");
+      iframe.loading = "lazy";
+      iframe.referrerPolicy = "no-referrer-when-downgrade";
+      iframe.allowFullscreen = true;
+      ph.replaceWith(iframe);
+    });
+  }
+
   /* ---------- Anno nel footer ---------- */
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
