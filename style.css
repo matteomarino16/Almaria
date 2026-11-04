@@ -599,6 +599,84 @@ body.menu-open .hero__logo { visibility: hidden !important; }
 .footer__credit a { color: var(--ink); border-bottom: 1px solid var(--line); }
 .footer__credit a:hover { border-color: var(--ink); }
 
+/* ---------- Pulsante WhatsApp ---------- */
+.wa-float {
+  position: fixed;
+  left: calc(22px + env(safe-area-inset-left));
+  bottom: calc(22px + env(safe-area-inset-bottom));
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 22px 6px 6px;
+  border-radius: 60px;
+  background: rgba(248, 245, 238, .9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(20, 18, 16, .08);
+  box-shadow: 0 10px 30px rgba(20, 18, 16, .16), 0 1px 3px rgba(20, 18, 16, .08);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease), opacity .3s;
+  animation: wa-in .8s var(--ease) 1.2s both;
+}
+.wa-float__icon {
+  position: relative;
+  width: 44px; height: 44px;
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--ink);
+  transition: background .4s var(--ease);
+}
+/* anello che "respira" ogni tanto */
+.wa-float__icon::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--terracotta);
+  animation: wa-pulse 4s var(--ease) 2.5s infinite;
+  opacity: 0;
+}
+.wa-float svg { width: 22px; height: 22px; }
+.wa-bubble { fill: var(--cream); }
+.wa-phone { fill: var(--ink); transition: fill .4s var(--ease); }
+.wa-float__text {
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.wa-float__text em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  letter-spacing: .01em;
+  text-transform: none;
+  margin-right: 4px;
+}
+.wa-float:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(20, 18, 16, .2), 0 1px 3px rgba(20, 18, 16, .08); }
+.wa-float:hover .wa-float__icon { background: var(--terracotta); }
+.wa-float:hover .wa-phone { fill: var(--terracotta); }
+.wa-float:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+body.menu-open .wa-float { opacity: 0; pointer-events: none; }
+
+@keyframes wa-in { from { opacity: 0; transform: translateY(16px) scale(.92); } to { opacity: 1; transform: none; } }
+@keyframes wa-pulse {
+  0% { opacity: .9; transform: scale(1); }
+  40%, 100% { opacity: 0; transform: scale(1.7); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-float { animation: none; }
+  .wa-float__icon::after { animation: none; }
+}
+/* su mobile solo il cerchio */
+@media (max-width: 860px) {
+  .wa-float { padding: 5px; left: calc(14px + env(safe-area-inset-left)); bottom: calc(14px + env(safe-area-inset-bottom)); }
+  .wa-float__text { display: none; }
+  .wa-float__icon { width: 46px; height: 46px; }
+}
+
 /* ---------- Lightbox ---------- */
 .lightbox {
   position: fixed; inset: 0; z-index: 100;
