@@ -334,6 +334,7 @@ body.menu-open .hero__logo { visibility: hidden !important; }
   font-family: var(--serif); font-style: italic;
   font-size: clamp(22px, 2.2vw, 28px); line-height: 1.35; color: var(--ink);
 }
+.about__img picture { display: block; width: 100%; height: 100%; }
 .about__img {
   aspect-ratio: 4 / 5;
   border-radius: 220px 220px var(--radius) var(--radius);
@@ -636,6 +637,45 @@ body.menu-open .hero__logo { visibility: hidden !important; }
 .map__note { margin: 0; max-width: 340px; font-size: 13px; line-height: 1.6; color: var(--ink-soft); }
 .map__note a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
 
+/* ---------- Banner cookie ---------- */
+.cookie {
+  position: fixed;
+  right: calc(22px + env(safe-area-inset-right));
+  bottom: calc(22px + env(safe-area-inset-bottom));
+  z-index: 90;
+  width: min(420px, calc(100vw - 32px));
+  padding: 26px 26px 22px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 18px 50px rgba(20, 18, 16, .18);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .45s var(--ease), transform .45s var(--ease);
+}
+.cookie[hidden] { display: none; }
+.cookie.is-open { opacity: 1; transform: none; }
+.cookie__title { font-family: var(--serif); font-size: 26px; line-height: 1.1; margin: 0 0 10px; color: var(--ink); }
+.cookie__title em { font-style: italic; }
+.cookie__text { margin: 0 0 20px; font-size: 14px; line-height: 1.6; color: var(--ink-soft); padding-right: 10px; }
+.cookie__text a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.cookie__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cookie__actions .btn { width: 100%; }
+.cookie__close {
+  position: absolute; top: 8px; right: 10px;
+  width: 34px; height: 34px;
+  border: 0; background: none;
+  font-family: var(--serif); font-size: 28px; line-height: 1; color: var(--stone);
+}
+.cookie__close:hover { color: var(--ink); }
+.footer__link-btn { border: 0; background: none; padding: 0; font: inherit; letter-spacing: inherit; color: inherit; cursor: pointer; transition: color .3s; }
+.footer__link-btn:hover { color: var(--ink); }
+@media (max-width: 600px) {
+  .cookie { left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); width: auto; padding: 22px 20px 18px; }
+  .cookie__title { font-size: 23px; }
+  body.cookie-open .wa-float { visibility: hidden; pointer-events: none; }
+}
+
 /* ---------- Pulsante WhatsApp ---------- */
 .wa-float {
   position: fixed;
@@ -696,7 +736,7 @@ body.menu-open .hero__logo { visibility: hidden !important; }
 .wa-float:hover .wa-float__icon { background: var(--terracotta); }
 .wa-float:hover .wa-phone { fill: var(--terracotta); }
 .wa-float:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-body.menu-open .wa-float { opacity: 0; pointer-events: none; }
+body.menu-open .wa-float { visibility: hidden; pointer-events: none; }
 
 @keyframes wa-in { from { opacity: 0; transform: translateY(16px) scale(.92); } to { opacity: 1; transform: none; } }
 @keyframes wa-pulse {

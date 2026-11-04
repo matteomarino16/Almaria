@@ -396,20 +396,69 @@
     form.reset();
   });
 
-  /* ---------- Mappa Google su richiesta ---------- */
-  var mapBtn = document.getElementById("map-load");
-  if (mapBtn) {
-    mapBtn.addEventListener("click", function () {
-      var ph = document.getElementById("map-placeholder");
-      var iframe = document.createElement("iframe");
-      iframe.title = "Mappa di Almarìa Case Mediterranee, San Nicola L'Arena";
-      iframe.src = ph.getAttribute("data-src");
-      iframe.loading = "lazy";
-      iframe.referrerPolicy = "no-referrer-when-downgrade";
-      iframe.allowFullscreen = true;
-      ph.replaceWith(iframe);
-    });
+  /* ---------- Mappa Google (solo con consenso) ---------- */
+  function loadMap() {
+    var ph = document.getElementById("map-placeholder");
+    if (!ph) return;
+    var iframe = document.createElement("iframe");
+    iframe.title = "Mappa di Almarìa Case Mediterranee, San Nicola L'Arena";
+    iframe.src = ph.getAttribute("data-src");
+    iframe.loading = "lazy";
+    iframe.referrerPolicy = "no-referrer-when-downgrade";
+    iframe.allowFullscreen = true;
+    ph.replaceWith(iframe);
   }
+  var mapBtn = document.getElementById("map-load");
+  if (mapBtn) mapBtn.addEventListener("click", loadMap);
+
+  /* ---------- Banner cookie ----------
+     Si apre alla prima visita. La scelta resta salvata nel browser per 6 mesi,
+     poi viene richiesta di nuovo (come indicato dal Garante Privacy). */
+  var CONSENT_KEY = "almaria-cookie-consent";
+  var CONSENT_DAYS = 180;
+  var banner = document.getElementById("cookie-banner");
+
+  function getConsent() {
+    try {
+      var v = JSON.parse(localStorage.getItem(CONSENT_KEY));
+      if (v && v.c && Date.now() - v.t < CONSENT_DAYS * 864e5) return v.c;
+    } catch (e) {}
+    return null;
+  }
+
+  function showBanner() {
+    if (!banner) return;
+    banner.hidden = false;
+    document.body.classList.add("cookie-open");
+    requestAnimationFrame(function () { banner.classList.add("is-open"); });
+  }
+
+  function hideBanner() {
+    if (!banner) return;
+    banner.classList.remove("is-open");
+    document.body.classList.remove("cookie-open");
+    setTimeout(function () { banner.hidden = true; }, 400);
+  }
+
+  function setConsent(choice) {
+    var previous = getConsent();
+    try { localStorage.setItem(CONSENT_KEY, JSON.stringify({ c: choice, t: Date.now() })); } catch (e) {}
+    hideBanner();
+    if (choice === "accepted") loadMap();
+    // se prima aveva accettato e ora rifiuta, ricarico per togliere la mappa già caricata
+    if (choice === "rejected" && previous === "accepted" && !document.getElementById("map-placeholder")) location.reload();
+  }
+
+  if (banner) {
+    banner.querySelectorAll("[data-consent]").forEach(function (btn) {
+      btn.addEventListener("click", function () { setConsent(btn.getAttribute("data-consent")); });
+    });
+    var current = getConsent();
+    if (current === "accepted") loadMap();
+    if (!current) setTimeout(showBanner, 500);
+  }
+  var prefsBtn = document.getElementById("cookie-prefs");
+  if (prefsBtn) prefsBtn.addEventListener("click", showBanner);
 
   /* ---------- Anno nel footer ---------- */
   document.getElementById("year").textContent = new Date().getFullYear();

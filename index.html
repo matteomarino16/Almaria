@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/hero-arco-1200.webp" media="(max-width: 860px)" fetchpriority="high">
   <link rel="preload" as="image" href="assets/img/hero-arco.webp" media="(min-width: 861px)" fetchpriority="high">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=9">
 
   <script type="application/ld+json">
   {
@@ -127,7 +127,10 @@
           <p class="reveal">Chi arriva qui non cerca solo riposo, ma la distanza esatta tra il cielo e il mare, tra il dentro e il fuori, tra il tempo che era e quello che verrà.</p>
           <blockquote class="about__quote reveal">Perché Almarìa non è un luogo da vedere, ma un modo di ricordare ciò che si era dimenticato di sentire.</blockquote>
         </div>
-        <figure class="about__img ph reveal"><img src="assets/img/chi-siamo-800.webp" srcset="assets/img/chi-siamo-800.webp 800w, assets/img/chi-siamo.webp 1600w" sizes="(max-width: 860px) 100vw, 45vw" decoding="async" alt="Nicchia ad arco con ceramiche e scrittoio in legno" loading="lazy"></figure>
+        <figure class="about__img ph reveal"><picture>
+          <!-- da computer la foto dell'arco (nell'hero si vede solo in parte) -->
+          <source media="(min-width: 861px)" srcset="assets/img/hero-arco-800.webp 800w, assets/img/hero-arco.webp 1440w" sizes="45vw">
+          <img src="assets/img/chi-siamo-800.webp" srcset="assets/img/chi-siamo-800.webp 800w, assets/img/chi-siamo.webp 1600w" sizes="(max-width: 860px) 100vw, 45vw" decoding="async" alt="Soggiorno con divano in muratura visto attraverso un arco" loading="lazy"></picture></figure>
       </div>
     </section>
 
@@ -566,10 +569,21 @@
     </div>
 
     <div class="container footer__bottom">
-      <p>© <span id="year">2026</span> Almarìa Case Mediterranee · <a href="privacy.html">Privacy</a> · <a href="cookie.html">Cookie</a></p>
+      <p>© <span id="year">2026</span> Almarìa Case Mediterranee · <a href="privacy.html">Privacy</a> · <a href="cookie.html">Cookie</a> · <button type="button" class="footer__link-btn" id="cookie-prefs">Preferenze cookie</button></p>
       <p class="footer__credit">Web by <a href="https://www.instagram.com/_matteomarino/" target="_blank" rel="noopener">Matteo Marino</a></p>
     </div>
   </footer>
+
+  <!-- BANNER COOKIE -->
+  <div class="cookie" id="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-text" hidden>
+    <button type="button" class="cookie__close" data-consent="rejected" aria-label="Chiudi e continua senza accettare">×</button>
+    <p class="cookie__title" id="cookie-title"><em>Un momento</em> per i cookie</p>
+    <p class="cookie__text" id="cookie-text">Il sito non usa cookie propri. Per mostrarti la mappa usiamo Google Maps, che può installare cookie anche di profilazione. Puoi accettarli o continuare senza. <a href="cookie.html">Cookie Policy</a></p>
+    <div class="cookie__actions">
+      <button type="button" class="btn btn--outline btn--sm" data-consent="rejected">Rifiuta</button>
+      <button type="button" class="btn btn--dark btn--sm" data-consent="accepted">Accetta</button>
+    </div>
+  </div>
 
   <!-- PULSANTE WHATSAPP -->
   <a class="wa-float" href="https://wa.me/393456920384?text=Ciao%20Almar%C3%ACa%2C%20vorrei%20informazioni%20sulle%20vostre%20case" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
@@ -591,6 +605,6 @@
     <p class="lightbox__caption"></p>
   </div>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
