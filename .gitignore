@@ -1,0 +1,5 @@
+# Materiali di lavoro (brochure PDF ecc.): non vanno sul sito
+_materiali/
+
+# File di sistema macOS
+.DS_Store
