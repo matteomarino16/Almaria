@@ -137,8 +137,10 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
 .header.is-scrolled { border-bottom-color: var(--line); }
 
 .header__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.header__mark { width: 26px; height: 32px; color: currentColor; }
-.header__name { font-family: var(--serif); font-size: 26px; letter-spacing: .08em; text-transform: uppercase; }
+.header__mark { width: 25px; height: 34px; color: currentColor; flex: 0 0 auto; }
+/* scritta del logo originale, identica al logo */
+.header__word { width: auto; height: 19px; aspect-ratio: 455 / 82; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 .nav { display: flex; }
 .nav a {
@@ -205,7 +207,13 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
 /* mentre vola il logo è fixed e lo muove solo lo script */
 .hero__logo.is-flying { position: fixed; left: 0; top: 0; margin: 0; backface-visibility: hidden; }
 .hero__tag { will-change: opacity; }
+/* proporzioni del logo originale */
+.hero__mark { display: block; width: calc(var(--logo-w) * .596); height: auto; aspect-ratio: 271 / 373; }
+.hero__wordmark { display: block; width: var(--logo-w); height: auto; aspect-ratio: 455 / 82; margin-top: calc(var(--logo-w) * .057); }
+.hero__tag { display: block; width: calc(var(--logo-w) * .701); height: auto; aspect-ratio: 319 / 27; margin-top: calc(var(--logo-w) * .053); }
 .hero__logo {
+  --logo-w: clamp(250px, 34vw, 480px);   /* larghezza della scritta ALMARÌA */
+  color: var(--ink);
   position: relative;
   z-index: 60;
   display: flex;
@@ -215,25 +223,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
   font-weight: 400;
   transform-origin: 50% 50%;
   will-change: transform, opacity;
-}
-.hero__mark { width: clamp(130px, 15vw, 210px); height: clamp(162px, 18.75vw, 262px); color: var(--ink); }
-.hero__wordmark, .hero__tag, .hero__brand .hero__lead { text-shadow: 0 0 24px rgba(248, 245, 238, .55); }
-.hero__wordmark {
-  font-family: var(--serif);
-  font-size: clamp(58px, 9vw, 128px);
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  line-height: 1;
-  margin-top: clamp(18px, 2.4vw, 30px);
-  padding-left: .07em; /* compensa il letter-spacing per centrare */
-}
-.hero__tag {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: clamp(14px, 1.7vw, 24px);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin-top: clamp(8px, 1vw, 14px);
 }
 .hero__lead {
   font-family: var(--serif);
@@ -313,12 +302,86 @@ body.menu-open .hero__logo { visibility: hidden !important; }
 .booking-bar {
   max-width: 1280px;
   margin: 0 auto;
-  padding: clamp(30px, 4vw, 50px) var(--gutter);
+  padding: clamp(40px, 5vw, 64px) var(--gutter) clamp(40px, 5vw, 60px);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(22px, 3vw, 34px);
+  text-align: center;
   border-bottom: 1px solid var(--line);
 }
 .booking-bar > * { max-width: 100%; }
+.booking-bar__lead { margin: 0; }
+
+/* Anteprima del widget Kross Booking (da sostituire con il codice ufficiale) */
+.kb-widget {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 999px;
+  background: rgba(239, 233, 221, .72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, .7);
+  box-shadow: 0 18px 50px rgba(20, 18, 16, .12), inset 0 1px 0 rgba(255, 255, 255, .8);
+  text-align: left;
+}
+.kb-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 58px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(20, 18, 16, .05);
+  color: var(--ink);
+  font-size: 16px;
+  white-space: nowrap;
+  transition: box-shadow .3s var(--ease);
+}
+.kb-pill:hover, .kb-pill:focus-within { box-shadow: 0 0 0 1.5px var(--ink), 0 4px 14px rgba(20, 18, 16, .08); }
+.kb-pill--plain { background: transparent; box-shadow: none; padding: 0 14px; }
+.kb-pill--plain:hover, .kb-pill--plain:focus-within { background: rgba(255, 255, 255, .55); box-shadow: none; }
+.kb-pill.has-error { box-shadow: 0 0 0 1.5px var(--terracotta); }
+.kb-ico { width: 21px; height: 21px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.kb-arrow { width: 18px; height: 18px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.kb-dates { flex: 1 1 auto; gap: 16px; }
+.kb-date { position: relative; flex: 1 1 0; min-width: 0; cursor: pointer; }
+.kb-date__label { display: block; overflow: hidden; text-overflow: ellipsis; }
+.kb-date__label.is-empty { color: var(--stone); }
+/* l'input vero resta sopra il testo, invisibile: apre il calendario */
+.kb-date input, .kb-select select {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0; border: 0; margin: 0; padding: 0;
+  cursor: pointer;
+  font-size: 16px; /* evita lo zoom su iPhone */
+}
+.kb-date input { inset: -18px -10px; width: calc(100% + 20px); height: calc(100% + 36px); }
+.kb-select { cursor: pointer; }
+.kb-select select { -webkit-appearance: none; appearance: none; }
+.kb-submit {
+  flex: 0 0 auto;
+  height: 58px;
+  padding: 0 34px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 15px;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: background .3s var(--ease), transform .3s var(--ease);
+}
+.kb-submit:hover { background: var(--terracotta); }
+.kb-submit:active { transform: scale(.98); }
+.kb-submit:focus-visible, .kb-pill:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
 /* ---------- Chi siamo ---------- */
 .about__grid {
@@ -585,9 +648,9 @@ body.menu-open .hero__logo { visibility: hidden !important; }
 .footer a:hover { color: var(--ink); }
 .footer__inner { display: flex; flex-direction: column; align-items: center; gap: 34px; }
 .footer__brand { display: flex; flex-direction: column; align-items: center; color: var(--ink); }
-.footer__mark { width: 44px; height: 55px; color: var(--ink); margin-bottom: 14px; }
-.footer__name { font-family: var(--serif); font-size: 32px; letter-spacing: .08em; text-transform: uppercase; line-height: 1; padding-left: .08em; }
-.footer__tag { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; margin-top: 8px; padding-left: .24em; }
+.footer__mark { width: 44px; height: 60px; color: var(--ink); margin-bottom: 16px; }
+.footer__word { width: 170px; height: auto; aspect-ratio: 455 / 82; color: var(--ink); }
+.footer__tagline { width: 120px; height: auto; aspect-ratio: 319 / 27; margin-top: 10px; color: var(--ink); }
 .footer__nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 32px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink); }
 .footer__contacts { margin: 0; line-height: 1.9; font-size: 14px; }
 .footer__bottom {
@@ -933,7 +996,8 @@ body.menu-open .wa-float { visibility: hidden; pointer-events: none; }
 
 @media (max-width: 600px) {
   body { font-size: 16px; }
-  .header__name { font-size: 22px; }
+  .header__word { height: 15px; }
+  .header__mark { width: 22px; height: 30px; }
   /* servizi extra compatti su mobile: 2 colonne */
   .services { grid-template-columns: 1fr 1fr; }
   .service { padding: 20px 14px 22px; }
@@ -957,6 +1021,13 @@ body.menu-open .wa-float { visibility: hidden; pointer-events: none; }
   .amenities ul { grid-template-columns: 1fr; }
   .form__row, .form__row--3 { grid-template-columns: 1fr; }
   .form .btn { justify-self: stretch; }
+  .kb-widget { flex-wrap: wrap; border-radius: 30px; padding: 10px; gap: 8px; }
+  .kb-pill { height: 52px; padding: 0 18px; font-size: 15px; }
+  .kb-dates { flex: 1 1 100%; gap: 10px; }
+  .kb-select { flex: 1 1 0; min-width: 0; }
+  .kb-select__label { overflow: hidden; text-overflow: ellipsis; }
+  .kb-pill--plain { background: rgba(255, 255, 255, .55); padding: 0 16px; }
+  .kb-submit { flex: 1 1 100%; height: 52px; }
   .gallery { grid-auto-rows: 150px; }
   .gallery__item--wide { grid-column: span 2; }
   .footer__bottom { justify-content: center; text-align: center; }

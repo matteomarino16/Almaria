@@ -396,6 +396,69 @@
     form.reset();
   });
 
+  /* ---------- Anteprima widget Kross Booking ----------
+     Finché non c'è il widget ufficiale: controlla le date e passa i dati
+     al modulo "Scriveteci", poi ci porta l'utente. */
+  var kb = document.getElementById("kb-preview");
+  if (kb) {
+    var kbIn = kb.elements.arrivo, kbOut = kb.elements.partenza;
+    var todayIso = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    kbIn.min = todayIso; kbOut.min = todayIso;
+
+    // date scritte per esteso: "10 lug 2027"
+    var fmt = function (iso) {
+      var p = iso.split("-");
+      return new Date(+p[0], p[1] - 1, +p[2]).toLocaleDateString("it-IT", { day: "numeric", month: "short", year: "numeric" });
+    };
+    var paintDate = function (input) {
+      var label = input.parentElement.querySelector(".kb-date__label");
+      label.textContent = input.value ? fmt(input.value) : label.getAttribute("data-placeholder");
+      label.classList.toggle("is-empty", !input.value);
+    };
+    var paintSelect = function (select) {
+      select.parentElement.querySelector(".kb-select__label").textContent = select.options[select.selectedIndex].text;
+    };
+    [kbIn, kbOut].forEach(function (input) {
+      paintDate(input);
+      // un clic ovunque sulla data apre il calendario
+      input.addEventListener("click", function () { if (input.showPicker) { try { input.showPicker(); } catch (e) {} } });
+      input.addEventListener("change", function () { paintDate(input); kb.querySelector(".kb-dates").classList.remove("has-error"); });
+    });
+    kb.querySelectorAll("select").forEach(function (sel) {
+      paintSelect(sel);
+      sel.addEventListener("change", function () { paintSelect(sel); });
+    });
+    kbIn.addEventListener("change", function () {
+      kbOut.min = kbIn.value || todayIso;
+      if (kbOut.value && kbOut.value <= kbIn.value) { kbOut.value = ""; paintDate(kbOut); }
+    });
+
+    kb.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var bad = !kbIn.value || !kbOut.value || kbOut.value <= kbIn.value;
+      kb.querySelector(".kb-dates").classList.toggle("has-error", bad);
+      if (bad) {
+        var target = !kbIn.value ? kbIn : kbOut;
+        if (target.showPicker) { try { target.showPicker(); } catch (err) { target.focus(); } } else target.focus();
+        return;
+      }
+      var f = document.getElementById("contact-form");
+      if (f) {
+        f.elements.arrivo.value = kbIn.value;
+        f.elements.partenza.value = kbOut.value;
+        f.elements.partenza.min = kbIn.value;
+        f.elements.ospiti.value = kb.elements.ospiti.value;
+        var casa = kb.elements.casa.value;
+        f.elements.appartamento.value = "";
+        Array.prototype.forEach.call(f.elements.appartamento.options, function (o) {
+          if (casa && o.text.indexOf(casa) === 0) f.elements.appartamento.value = o.value || o.text;
+        });
+      }
+      document.getElementById("prenota").scrollIntoView({ behavior: "smooth" });
+      setTimeout(function () { if (f) f.elements.nome.focus({ preventScroll: true }); }, 700);
+    });
+  }
+
   /* ---------- Mappa Google (solo con consenso) ---------- */
   function loadMap() {
     var ph = document.getElementById("map-placeholder");
