@@ -193,8 +193,8 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
   min-height: 100svh;
   color: var(--ink);
   background:
-    linear-gradient(180deg, rgba(248, 245, 238, .45) 0%, rgba(248, 245, 238, 0) 28%, rgba(248, 245, 238, 0) 70%, rgba(248, 245, 238, .3) 100%),
-    url("assets/img/hero-arco.webp") center 38% / cover no-repeat;
+    linear-gradient(180deg, rgba(20, 18, 16, .45) 0%, rgba(20, 18, 16, .28) 40%, rgba(20, 18, 16, .3) 65%, rgba(20, 18, 16, .5) 100%),
+    url("assets/img/hero-balcone.webp") center 40% / cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -213,7 +213,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
 .hero__tag { display: block; width: calc(var(--logo-w) * .701); height: auto; aspect-ratio: 319 / 27; margin-top: calc(var(--logo-w) * .053); }
 .hero__logo {
   --logo-w: clamp(250px, 34vw, 480px);   /* larghezza della scritta ALMARÌA */
-  color: var(--ink);
+  color: var(--cream);
   position: relative;
   z-index: 60;
   display: flex;
@@ -237,14 +237,14 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
   position: absolute;
   bottom: 18px; left: 50%;
   width: 1px; height: 54px;
-  background: rgba(20, 18, 16, .2);
+  background: rgba(248, 245, 238, .35);
   overflow: hidden;
   transform: translateX(-50%);
 }
 .hero__scroll span {
   position: absolute; left: 0; top: -50%;
   width: 1px; height: 50%;
-  background: var(--ink);
+  background: var(--cream);
   animation: scrollcue 2.2s var(--ease) infinite;
 }
 @keyframes scrollcue { to { top: 100%; } }
@@ -255,7 +255,11 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
 .js-brand .header.menu-open .header__brand { opacity: 1; pointer-events: auto; }
 body.menu-open .hero__logo { visibility: hidden !important; }
 /* header trasparente e chiaro finché è sopra la foto dell'hero */
+/* da computer l'hero è una foto scura: menu e logo chiari sopra di lei */
+.header.on-hero:not(.menu-open) .btn--outline { border-color: rgba(248, 245, 238, .85); color: var(--cream); }
+.header.on-hero:not(.menu-open) .btn--outline:hover { background: var(--cream); color: var(--ink); }
 .header.on-hero:not(.menu-open) {
+  color: var(--cream);
   background: transparent;
   border-bottom-color: transparent;
   backdrop-filter: none; -webkit-backdrop-filter: none;
@@ -907,6 +911,10 @@ body.menu-open .wa-float { visibility: hidden; pointer-events: none; }
     justify-content: flex-start;
     padding-top: calc(var(--header-h) + 9svh);
   }
+  .hero__logo { color: var(--ink); }
+  .header.on-hero:not(.menu-open) { color: var(--ink); }
+  .hero__scroll { background: rgba(20, 18, 16, .2); }
+  .hero__scroll span { background: var(--ink); }
   .header { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(248, 245, 238, .97); }
   .wa-float { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--cream); }
 
