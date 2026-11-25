@@ -193,8 +193,9 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
   min-height: 100svh;
   color: var(--ink);
   background:
-    linear-gradient(180deg, rgba(20, 18, 16, .45) 0%, rgba(20, 18, 16, .28) 40%, rgba(20, 18, 16, .3) 65%, rgba(20, 18, 16, .5) 100%),
-    url("assets/img/hero-balcone.webp") center 40% / cover no-repeat;
+    radial-gradient(ellipse 38% 42% at 50% 46%, rgba(20, 18, 16, .32), rgba(20, 18, 16, 0) 100%),
+    linear-gradient(180deg, rgba(20, 18, 16, .38) 0%, rgba(20, 18, 16, .06) 22%, rgba(20, 18, 16, 0) 70%, rgba(20, 18, 16, .18) 100%),
+    url("assets/img/hero-balcone.webp") center 72% / cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,7 +213,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
 .hero__wordmark { display: block; width: var(--logo-w); height: auto; aspect-ratio: 455 / 82; margin-top: calc(var(--logo-w) * .057); }
 .hero__tag { display: block; width: calc(var(--logo-w) * .701); height: auto; aspect-ratio: 319 / 27; margin-top: calc(var(--logo-w) * .053); }
 .hero__logo {
-  --logo-w: clamp(250px, 34vw, 480px);   /* larghezza della scritta ALMARÌA */
+  --logo-w: clamp(250px, 27vw, 400px);   /* larghezza della scritta ALMARÌA */
   color: var(--cream);
   position: relative;
   z-index: 60;
