@@ -4,6 +4,9 @@
 (function () {
   "use strict";
 
+  // traduzione dei testi creati dallo script (vedi i18n.js)
+  var T = function (text) { return window.almariaT ? window.almariaT(text) : text; };
+
   // Email che riceve le richieste dal form
   var CONTACT_EMAIL = "almariacasemediterranee@gmail.com";
 
@@ -125,7 +128,7 @@
     document.body.classList.toggle("menu-open", open);
     if (backdrop) { backdrop.hidden = !open; backdrop.classList.toggle("is-open", open); }
     burger.setAttribute("aria-expanded", String(open));
-    burger.setAttribute("aria-label", open ? "Chiudi il menu" : "Apri il menu");
+    burger.setAttribute("aria-label", T(open ? "Chiudi il menu" : "Apri il menu"));
     document.body.style.overflow = open ? "hidden" : "";
   }
   burger.addEventListener("click", function () {
@@ -302,7 +305,7 @@
   });
 
   function setStatus(msg, type) {
-    status.textContent = msg;
+    status.textContent = T(msg);
     status.className = "form__status" + (type ? " is-" + type : "");
   }
 
@@ -359,6 +362,7 @@
       "Partenza: " + formatDate(f.partenza.value),
       "Ospiti: " + f.ospiti.value,
       "Servizi extra: " + (servizi.length ? servizi.join(", ") : "—"),
+      "Lingua del sito: " + document.documentElement.lang.toUpperCase(),
       "",
       f.messaggio.value.trim()
     ].join("\n");
@@ -376,8 +380,7 @@
   /* ---------- Ricerca Kross Booking ----------
      Controlla le date e apre il booking engine di Kross con date e ospiti
      già compilati (stessi parametri del widget ufficiale). */
-  var kb = document.getElementById("kb-preview");
-  if (kb) {
+  document.querySelectorAll(".kb-widget").forEach(function (kb) {
     var kbIn = kb.elements.arrivo, kbOut = kb.elements.partenza;
     var todayIso = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
     kbIn.min = todayIso; kbOut.min = todayIso;
@@ -385,7 +388,7 @@
     // date scritte per esteso: "10 lug 2027"
     var fmt = function (iso) {
       var p = iso.split("-");
-      return new Date(+p[0], p[1] - 1, +p[2]).toLocaleDateString("it-IT", { day: "numeric", month: "short", year: "numeric" });
+      return new Date(+p[0], p[1] - 1, +p[2]).toLocaleDateString(window.almariaLang ? window.almariaLang() : "it", { day: "numeric", month: "short", year: "numeric" });
     };
     var paintDate = function (input) {
       var label = input.parentElement.querySelector(".kb-date__label");
@@ -405,6 +408,11 @@
       paintSelect(sel);
       sel.addEventListener("change", function () { paintSelect(sel); });
     });
+    // al cambio lingua riscrive date e ospiti nella nuova lingua
+    document.addEventListener("almaria:lang", function () {
+      paintDate(kbIn); paintDate(kbOut);
+      kb.querySelectorAll("select").forEach(paintSelect);
+    });
     kbIn.addEventListener("change", function () {
       kbOut.min = kbIn.value || todayIso;
       if (kbOut.value && kbOut.value <= kbIn.value) { kbOut.value = ""; paintDate(kbOut); }
@@ -423,19 +431,19 @@
       var params = [
         "adults=" + adulti, "children=0", "rooms=1",
         "guests=" + adulti, "n_guests=" + adulti, "guests_rooms=" + adulti + ",0;",
-        "kross_lang=" + (document.documentElement.lang === "en" ? "en" : "it"),
+        "kross_lang=" + document.documentElement.lang,
         "from=" + kbIn.value, "to=" + kbOut.value
       ];
       window.location.href = kb.getAttribute("action") + "?" + params.join("&");
     });
-  }
+  });
 
   /* ---------- Mappa Google (solo con consenso) ---------- */
   function loadMap() {
     var ph = document.getElementById("map-placeholder");
     if (!ph) return;
     var iframe = document.createElement("iframe");
-    iframe.title = "Mappa di Almarìa Case Mediterranee, San Nicola L'Arena";
+    iframe.title = T("Mappa di Almarìa Case Mediterranee, San Nicola L'Arena");
     iframe.src = ph.getAttribute("data-src");
     iframe.loading = "lazy";
     iframe.referrerPolicy = "no-referrer-when-downgrade";
