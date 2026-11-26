@@ -373,9 +373,9 @@
     form.reset();
   });
 
-  /* ---------- Anteprima widget Kross Booking ----------
-     Finché non c'è il widget ufficiale: controlla le date e passa i dati
-     al modulo "Scriveteci", poi ci porta l'utente. */
+  /* ---------- Ricerca Kross Booking ----------
+     Controlla le date e apre il booking engine di Kross con date e ospiti
+     già compilati (stessi parametri del widget ufficiale). */
   var kb = document.getElementById("kb-preview");
   if (kb) {
     var kbIn = kb.elements.arrivo, kbOut = kb.elements.partenza;
@@ -419,20 +419,14 @@
         if (target.showPicker) { try { target.showPicker(); } catch (err) { target.focus(); } } else target.focus();
         return;
       }
-      var f = document.getElementById("contact-form");
-      if (f) {
-        f.elements.arrivo.value = kbIn.value;
-        f.elements.partenza.value = kbOut.value;
-        f.elements.partenza.min = kbIn.value;
-        f.elements.ospiti.value = kb.elements.ospiti.value;
-        var casa = kb.elements.casa.value;
-        f.elements.appartamento.value = "";
-        Array.prototype.forEach.call(f.elements.appartamento.options, function (o) {
-          if (casa && o.text.indexOf(casa) === 0) f.elements.appartamento.value = o.value || o.text;
-        });
-      }
-      document.getElementById("prenota").scrollIntoView({ behavior: "smooth" });
-      setTimeout(function () { if (f) f.elements.nome.focus({ preventScroll: true }); }, 700);
+      var adulti = kb.elements.ospiti.value;
+      var params = [
+        "adults=" + adulti, "children=0", "rooms=1",
+        "guests=" + adulti, "n_guests=" + adulti, "guests_rooms=" + adulti + ",0;",
+        "kross_lang=" + (document.documentElement.lang === "en" ? "en" : "it"),
+        "from=" + kbIn.value, "to=" + kbOut.value
+      ];
+      window.location.href = kb.getAttribute("action") + "?" + params.join("&");
     });
   }
 

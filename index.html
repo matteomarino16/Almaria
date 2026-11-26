@@ -103,17 +103,14 @@
         <a href="#chi-siamo" class="hero__scroll" aria-label="Scorri verso il basso"><span></span></a>
       </div>
 
-      <!-- BANNER KROSS BOOKING
-           Incollare qui dentro il codice del widget/banner fornito da Kross Booking
-           (script + div). Il pulsante qui sotto è un segnaposto: va rimosso quando
-           il widget è attivo. -->
+      <!-- BANNER KROSS BOOKING -->
       <div class="booking-bar" id="kross-booking">
         <p class="hero__lead booking-bar__lead">Il fascino autentico della Sicilia in un castello sul mare.</p>
 
-        <!-- ANTEPRIMA WIDGET KROSS BOOKING
-             Quando arriva il codice ufficiale, sostituire tutto il <form> qui sotto.
-             Per ora la ricerca compila il modulo "Scriveteci" con date e ospiti. -->
-        <form class="kb-widget" id="kb-preview" aria-label="Verifica disponibilità" novalidate>
+        <!-- RICERCA KROSS BOOKING
+             Il pulsante apre il booking engine (almariacasemediterranee.kross.travel)
+             con date e ospiti già compilati: vedi "Ricerca Kross Booking" in script.js. -->
+        <form class="kb-widget" id="kb-preview" action="https://almariacasemediterranee.kross.travel/book/step1" aria-label="Verifica disponibilità" novalidate>
           <div class="kb-pill kb-dates">
             <svg class="kb-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
             <label class="kb-date">
@@ -131,16 +128,8 @@
             <span class="kb-select__label">2 ospiti</span>
             <select name="ospiti" aria-label="Numero di ospiti">
               <option value="1">1 ospite</option><option value="2" selected>2 ospiti</option><option value="3">3 ospiti</option>
-              <option value="4">4 ospiti</option><option value="5">5 ospiti</option><option value="Più di 5">Più di 5</option>
-            </select>
-          </label>
-          <label class="kb-pill kb-pill--plain kb-select">
-            <svg class="kb-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11.5a7 7 0 0 1 14 0V20Z"/><path d="M9.5 20v-5a2.5 2.5 0 0 1 5 0v5"/></svg>
-            <span class="kb-select__label">Tutte le case</span>
-            <select name="casa" aria-label="Casa">
-              <option value="">Tutte le case</option>
-              <option>Casa Agave</option><option>Casa Mirto</option><option>Casa Aloe</option>
-              <option>Casa Timo</option><option>Casa Ginestra</option><option>Casa Carubbo</option>
+              <option value="4">4 ospiti</option><option value="5">5 ospiti</option><option value="6">6 ospiti</option>
+              <option value="7">7 ospiti</option><option value="8">8 ospiti</option>
             </select>
           </label>
           <button type="submit" class="kb-submit">Verifica disponibilità</button>
@@ -631,6 +620,6 @@
     <p class="lightbox__caption"></p>
   </div>
 
-  <script src="script.js?v=19"></script>
+  <script src="script.js?v=20"></script>
 </body>
 </html>
