@@ -214,6 +214,11 @@
     if (lastFocus) lastFocus.focus();
   }
 
+  // A schermo intero: sui telefoni basta la versione da 1200 px (più leggera)
+  function bigSrc(src) {
+    return window.innerWidth <= 860 ? src.replace(/\.webp$/, "-1200.webp") : src;
+  }
+
   // Galleria generale
   var galleryItems = Array.prototype.slice.call(document.querySelectorAll(".gallery__item"));
   galleryItems.forEach(function (btn) {
@@ -221,29 +226,26 @@
       var available = galleryItems.filter(function (b) { return !b.classList.contains("is-missing"); });
       var list = available.map(function (b) {
         var img = b.querySelector("img");
-        return { src: (img.currentSrc || img.src).replace(/-800\.webp$/, ".webp"), alt: img.alt };
+        return { src: bigSrc((img.currentSrc || img.src).replace(/-(400|800|1200)\.webp$/, ".webp")), alt: img.alt };
       });
       openLightbox(list, available.indexOf(btn));
     });
   });
 
-  // Mosaico di ogni casa: assets/img/case/<nome>-1.jpg ... <nome>-N.jpg
-  document.querySelectorAll(".house[data-gallery]").forEach(function (house) {
-    var key = house.getAttribute("data-gallery");
-    var count = parseInt(house.getAttribute("data-count"), 10) || 1;
-    var name = house.getAttribute("data-name") || "";
+  // Foto di ogni casa: assets/img/case/<nome>-1.webp ... <nome>-N.webp
+  document.querySelectorAll(".house-card[data-gallery]").forEach(function (card) {
+    var key = card.getAttribute("data-gallery");
+    var count = parseInt(card.getAttribute("data-count"), 10) || 1;
+    var name = card.getAttribute("data-name") || "";
     var list = [];
     for (var i = 1; i <= count; i++) {
-      list.push({ src: "assets/img/case/" + key + "-" + i + ".webp", alt: name });
+      list.push({ src: bigSrc("assets/img/case/" + key + "-" + i + ".webp"), alt: name });
     }
-    house.querySelectorAll(".mosaic__item").forEach(function (item) {
-      item.addEventListener("click", function (e) {
-        var idx = e.target.closest(".mosaic__all") ? 0 : parseInt(item.getAttribute("data-index"), 10) || 0;
-        openLightbox(list, idx);
-      });
+    card.querySelectorAll("[data-index]").forEach(function (btn) {
+      btn.addEventListener("click", function () { openLightbox(list, parseInt(btn.getAttribute("data-index"), 10) || 0); });
     });
-    var allBtn = house.querySelector(".house__gallery-btn");
-    if (allBtn) allBtn.addEventListener("click", function () { openLightbox(list, 0); });
+    var all = card.querySelector(".house-card__all");
+    if (all) all.addEventListener("click", function () { openLightbox(list, 0); });
   });
 
   lightbox.querySelector(".lightbox__close").addEventListener("click", closeLightbox);
@@ -269,31 +271,6 @@
     var dx = e.changedTouches[0].clientX - touchX;
     if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
     touchX = null;
-  });
-
-  /* ---------- Schede delle case ---------- */
-  var tabs = Array.prototype.slice.call(document.querySelectorAll(".houses__tab"));
-  function selectTab(tab, focus) {
-    tabs.forEach(function (t) {
-      var on = t === tab;
-      t.setAttribute("aria-selected", String(on));
-      t.tabIndex = on ? 0 : -1;
-      var panel = document.getElementById(t.getAttribute("aria-controls"));
-      if (panel) { panel.hidden = !on; panel.classList.toggle("is-active", on); }
-    });
-    if (focus) tab.focus();
-    tab.scrollIntoView({ block: "nearest", inline: "nearest" });
-  }
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener("click", function () { selectTab(tab); });
-    tab.addEventListener("keydown", function (e) {
-      var j = null;
-      if (e.key === "ArrowRight") j = (i + 1) % tabs.length;
-      if (e.key === "ArrowLeft") j = (i - 1 + tabs.length) % tabs.length;
-      if (e.key === "Home") j = 0;
-      if (e.key === "End") j = tabs.length - 1;
-      if (j !== null) { e.preventDefault(); selectTab(tabs[j], true); }
-    });
   });
 
   // "Richiedi disponibilità" preseleziona la casa nel form

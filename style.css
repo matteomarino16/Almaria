@@ -193,10 +193,9 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.1; 
   min-height: 100svh;
   color: var(--ink);
   background:
-    radial-gradient(ellipse 30% 16% at 50% 66%, rgba(248, 245, 238, .78), rgba(248, 245, 238, 0) 100%),
-    radial-gradient(ellipse 38% 42% at 50% 50%, rgba(248, 245, 238, .55), rgba(248, 245, 238, 0) 100%),
-    linear-gradient(180deg, rgba(248, 245, 238, .55) 0%, rgba(248, 245, 238, .08) 20%, rgba(248, 245, 238, 0) 70%, rgba(248, 245, 238, .2) 100%),
-    url("assets/img/hero-balcone.webp") center 72% / cover no-repeat;
+    radial-gradient(ellipse 34% 40% at 50% 52%, rgba(248, 245, 238, .45), rgba(248, 245, 238, 0) 100%),
+    linear-gradient(180deg, rgba(248, 245, 238, .35) 0%, rgba(248, 245, 238, 0) 22%, rgba(248, 245, 238, 0) 75%, rgba(248, 245, 238, .2) 100%),
+    url("assets/img/hero-soggiorno.webp") center 55% / cover no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -506,6 +505,54 @@ body.menu-open .hero__logo { visibility: hidden !important; }
 }
 .amenities li { padding-left: 26px; position: relative; }
 .amenities li::before { content: "—"; color: var(--terracotta); position: absolute; left: 0; }
+
+/* ---------- Le case: tutte visibili in una griglia ---------- */
+.houses {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(36px, 4vw, 56px) clamp(20px, 2.4vw, 32px);
+}
+.house-card { display: flex; flex-direction: column; min-width: 0; }
+.house-card__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0; padding: 0;
+  border-radius: var(--radius);
+  cursor: zoom-in;
+}
+.house-card__media:hover img, .house-card__thumb:hover img { transform: scale(1.04); }
+.house-card__count {
+  position: absolute; right: 12px; bottom: 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(248, 245, 238, .92);
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink);
+}
+.house-card__thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
+.house-card__thumb {
+  display: block; aspect-ratio: 1 / 1;
+  border: 0; padding: 0;
+  border-radius: var(--radius);
+  cursor: zoom-in;
+}
+.house-card__media:focus-visible, .house-card__thumb:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.house-card__body { display: flex; flex-direction: column; flex: 1; padding-top: 22px; }
+.house-card__num { margin: 0; font-size: 12px; letter-spacing: .2em; color: var(--stone); }
+.house-card__name { font-size: clamp(30px, 2.6vw, 38px); margin: 4px 0 6px; }
+.house-card__guests { margin: 0 0 16px; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; }
+.house-card__features {
+  list-style: none; margin: 0 0 22px; padding: 16px 0 0;
+  border-top: 1px solid var(--line);
+  display: grid; gap: 6px;
+  font-size: 14.5px; line-height: 1.5; color: var(--ink-soft);
+}
+.house-card__features li { padding-left: 20px; position: relative; }
+.house-card__features li::before { content: ""; position: absolute; left: 0; top: .72em; width: 10px; height: 1px; background: var(--terracotta); }
+.house-card__actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
+.house-card__actions .btn { flex: 1 1 auto; }
 
 /* ---------- Servizi ---------- */
 .servizi { background: var(--cream); }
@@ -890,6 +937,7 @@ body.menu-open .wa-float { visibility: hidden; pointer-events: none; }
    Responsive
    ========================================================= */
 @media (max-width: 1024px) {
+  .houses { grid-template-columns: repeat(2, 1fr); }
   .house__info { grid-template-columns: 1fr 1.4fr; }
   .house__actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
   .services { grid-template-columns: repeat(2, 1fr); }
@@ -1019,6 +1067,7 @@ body.menu-open .wa-float { visibility: hidden; pointer-events: none; }
   .header__mark { width: 22px; height: 30px; }
   /* servizi extra compatti su mobile: 2 colonne */
   .services { grid-template-columns: 1fr 1fr; }
+  .houses { grid-template-columns: 1fr; gap: 48px; }
   .service { padding: 20px 14px 22px; }
   .service__icon svg { width: 28px; height: 28px; }
   .service h3 { font-size: 20px; margin: 12px 0 6px; line-height: 1.15; }
