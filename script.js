@@ -276,15 +276,17 @@
     touchX = null;
   });
 
-  // "Richiedi disponibilità" preseleziona la casa nel form
+  // "Richiedi disponibilità" sulle case: porta alla barra date (#verifica)
+  // e la evidenzia un attimo, così si capisce dove scegliere le date
   document.querySelectorAll("[data-book]").forEach(function (link) {
     link.addEventListener("click", function () {
-      var name = link.getAttribute("data-book");
-      var select = document.querySelector('#contact-form select[name="appartamento"]');
-      if (!select) return;
-      Array.prototype.forEach.call(select.options, function (o) {
-        if (o.text.indexOf(name) === 0) select.value = o.value || o.text;
-      });
+      var bar = document.getElementById("verifica");
+      if (!bar) return;
+      bar.classList.add("is-visible");
+      var w = bar.querySelector(".kb-widget");
+      w.classList.remove("is-highlight");
+      setTimeout(function () { w.classList.add("is-highlight"); }, 450);
+      setTimeout(function () { w.classList.remove("is-highlight"); }, 2400);
     });
   });
 
